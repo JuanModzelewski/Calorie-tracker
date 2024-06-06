@@ -37,7 +37,6 @@ SHEET = GSPREAD_CLIENT.open("calorie_tracker")
 #GSPREAD SHEETS
 calorie_tracker = SHEET.worksheet("calorie_tracker")
 calorie_goal = SHEET.worksheet("calorie_goal")
-exercise_tracker = SHEET.worksheet("exercise_tracker")
 weight_tracker = SHEET.worksheet("weight_tracker")
 food_items = SHEET.worksheet("food_items")
 
@@ -73,7 +72,9 @@ def welcome_screen():
     ''')
 
     print("Welcome to Calorie Tracker.\n".center(110))
-    typingPrint("Loading Main Menu, Please Wait...\n".center(110))
+    loadingMenu("           LOADING MENU, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
+    print()
+    time.sleep(0.5)
 
 
 def main():
@@ -83,6 +84,12 @@ def main():
 
 
 # Concept and tutorial used from https://www.101computing.net/python-typing-text-effect/
+def loadingMenu(text, text_color = Fore.BLACK, background_color = Back.WHITE):
+    for character in text:
+        sys.stdout.write(text_color + background_color + character)
+        sys.stdout.flush()
+        time.sleep(0.025)
+
 def typingPrint(text):
   for character in text:
     sys.stdout.write(character)
@@ -98,12 +105,11 @@ def typingInput(text):
   return value
 
 def clearScreen():
-  os.system("clear")
+  os.system('cls' if os.name == 'nt' else 'clear')
 
 def menu_navigation():
     main_menu()
     calorie_goal_menu()
-    validate_menu_data()
 
 def main_menu():
     """
@@ -113,116 +119,153 @@ def main_menu():
     # Loop repeats until valid input is received
     while True:
         print()
-        print(Fore.WHITE + "∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫ₒ" + Fore.BLUE + "   MAIN MENU   " + Fore.WHITE + "ₒ▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙")
+        print(Fore.WHITE + "    ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫ₒ" + Fore.BLUE + "   MAIN MENU   " + Fore.WHITE + "ₒ▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙")
         print()
-        typingPrint("Please select one of the following options:\n")
+        typingPrint("   Please select one of the following options:\n".ljust(-50))
         print()
-        print("1. Calorie Goal")
-        print("2. Calorie Tracker")
-        print("3. Weight Tracker")
-        print("4. Food Items")
+        print("     1. Calorie Goal")
+        print("     2. Calorie Tracker")
+        print("     3. Weight Tracker")
+        print("     4. Food Library")
+        print()
 
-
-        user_input = input("> ")
+        user_input = input("    > ")
          
-        # Calorie Tracker
+        # Calorie Goal Menu
         if user_input == "1":
-            typingPrint("Loading Calorie Goal, please wait...\n".center(110))
+            print()
+            loadingMenu("           LOADING CALORIE GOAL, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
             clearScreen()
             calorie_goal_menu()
             break
 
-        # Exercise Tracker
+        # Calorie Tracker Menu
         elif user_input == "2":
-            typingPrint("Loading Calorie Tracker, please wait...\n".center(110))
+            print()
+            loadingMenu("           LOADING CALORIE TRACKER, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
             clearScreen()
             calorie_tracker_menu()
             break
 
-        # Weight Tracker
+        # Weight Tracker Menu
         elif user_input == "3":
-            typingPrint("Loading Weight Tracker, please wait...\n".center(110))
+            print()
+            loadingMenu("           LOADING WEIGHT TRACKER, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
             clearScreen()
             weight_tracker_menu()
             break
 
-        # Food Items
+        # Food Library Menu
         elif user_input == "4":
-            typingPrint("Loading Food Items, please wait...\n".center(110))
+            print()
+            loadingMenu("           LOADING FOOD LIBRARY, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
             clearScreen()
             food_items_menu()
             break
 
             # Invalid input raises error
         else:
-            validate_menu_data("main_menu")
+            validate_data("main_menu", user_input)
+
+    return user_input 
     
 def calorie_goal_menu():
     """
-    Displays calorie goal submenu
-    Allows users to set a new daily calorie goal
-    Navigate back to main menu
+    Displays current calorie goal retrieved from sheet.
+    Menu items allow users to set a new daily calorie goal and navigate back to main menu
     """
+    # Gets the current calorie goal from worksheet to be displayed
+    view_calorie_goal = calorie_goal.cell(2,2, value_render_option='FORMULA').value
+    
     # Loop repeats until valid input is received
     while True:
         print()
         # Heading styles from https://textkool.com
-        print(Fore.WHITE + "∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫ₒ" + Fore.BLUE + "   CALORIE GOAL MENU   " + Fore.WHITE + "ₒ▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙")
+        print(Fore.WHITE + "    ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫ₒ" + Fore.BLUE + "   CALORIE GOAL MENU   " + Fore.WHITE + "ₒ▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙")
         print()
-        typingPrint("Please select one of the following options:\n")
+        print(Fore.GREEN + f"   CURRENT CALORIE GOAL: {view_calorie_goal}")
         print()
-        print("1. View Calorie Goal")
-        print("2. Back to Main Menu")
+        typingPrint("   Please select one of the following options:\n")
+        print()
+        print("     1. Update Calorie Goal")
+        print("     2. Back to Main Menu")
+        print()
 
-        
-        user_input = input("> ")
+        user_input = input("    > ")
 
         # Update Calorie Goal
         if user_input == "1":
-            typingPrint("Preparing to update, please wait...\n".center(110))
+            print()
+            loadingMenu("           PREPARING TO UPDATE, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
             clearScreen()
-            print("Update Calorie Goal")
+            update_calorie_goal()
             break
 
         # Back to Main Menu
         elif user_input == "2":
-            typingPrint("Loading Main Menu, please wait...\n".center(110))
+            print()
+            loadingMenu("           LOADING MAIN MENU, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
             clearScreen()
             main_menu()
             break
 
         # Runs validation with users input
         else:
-            validate_menu_data("calorie_goal_menu")
+            validate_data("calorie_goal_menu", user_input)
     
-def validate_menu_data(current_menu):
+    return user_input
+
+    
+def validate_data(data, user_input):
     """
     Validates user input based on current menu
     """
-    try:
-        user_input = input
+
+    try:  
         call_error = ValueError()
 
-        if current_menu == "main_menu":
+        if data == "main_menu":
             if user_input != "1" or "2" or "3" or "4":
                 call_error.strerror = "Select option 1 to 4"
                 raise call_error
         
-        elif current_menu == "calorie_goal_menu":
+        elif data == "calorie_goal_menu":
             if user_input != "1" or "2":
                 call_error.strerror = "Select option 1 or 2"
                 raise call_error
+            
+        elif data == "calorie_data":
+            if not (1500 <= user_input <= 4000):
+                call_error.strerror = "Select a goal between 1000 and 4000"
+                raise call_error
+
     
     except ValueError as e:
         print()
-        print(Fore.RED + f"Invalid data: {e.strerror}, please try again.\n")
+        print(Fore.RED + f"   Invalid data: {e.strerror}, please try again.\n")
+        return False
          
     return True
+
     
-       
+def update_calorie_goal():
+    while True:
+        print()
+        typingPrint("   Please enter your new calorie goal:\n")
+        print()
+        user_input = int(input("    > "))
+
+        if validate_data("calorie_data", user_input):
+            print()
+            loadingMenu("               UPDATING CALORIE GOAL, PLEASE WAIT...                ".center(110), Fore.BLACK, Back.WHITE)
+            print()
+            calorie_goal.update_cell(2,2, user_input)
+            clearScreen()
+            calorie_goal_menu()
+            break
     
-    
-    
+        
+        
 
 
 def food_items_menu():

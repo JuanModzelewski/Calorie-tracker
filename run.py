@@ -52,7 +52,7 @@ def welcome_screen():
     Displays Banner and welcome message
     """
     # Logo
-    print(Fore.BLUE + r'''                                                                                                                                                                                      
+    print(Fore.BLUE + r'''                                                                                                                                                                                                                                             
               ,ad8888ba,         db         88           ,ad8888ba,    88888888ba   88  88888888888           
              d8"'    `"8b       d88b        88          d8"'    `"8b   88      "8b  88  88                    
             d8'                d8'`8b       88         d8'        `8b  88      ,8P  88  88                    
@@ -72,12 +72,169 @@ def welcome_screen():
             88       88      `8b  d8'          `8b  `"Y8888Y"'   88       Y8b  88888888888  88      `8b                                                                                                                                                                                                                                                                                                                               
     ''')
 
-    # Intro to explain program purpose 
-    print("Welcome to Calorie Tracker.\n")
+    print("Welcome to Calorie Tracker.\n".center(110))
+    typingPrint("Loading Main Menu, Please Wait...\n".center(110))
 
 
 def main():
     welcome_screen()
+    menu_navigation()
+    
+
+
+# Concept and tutorial used from https://www.101computing.net/python-typing-text-effect/
+def typingPrint(text):
+  for character in text:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.02)
+
+def typingInput(text):
+  for character in text:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.02)
+  value = input()  
+  return value
+
+def clearScreen():
+  os.system("clear")
+
+def menu_navigation():
+    main_menu()
+    calorie_goal_menu()
+    validate_menu_data()
+
+def main_menu():
+    """
+    Runs the main menu of the program.
+    Allows users to navigate through program.
+    """
+    # Loop repeats until valid input is received
+    while True:
+        print()
+        print(Fore.WHITE + "∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫ₒ" + Fore.BLUE + "   MAIN MENU   " + Fore.WHITE + "ₒ▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙")
+        print()
+        typingPrint("Please select one of the following options:\n")
+        print()
+        print("1. Calorie Goal")
+        print("2. Calorie Tracker")
+        print("3. Weight Tracker")
+        print("4. Food Items")
+
+
+        user_input = input("> ")
+         
+        # Calorie Tracker
+        if user_input == "1":
+            typingPrint("Loading Calorie Goal, please wait...\n".center(110))
+            clearScreen()
+            calorie_goal_menu()
+            break
+
+        # Exercise Tracker
+        elif user_input == "2":
+            typingPrint("Loading Calorie Tracker, please wait...\n".center(110))
+            clearScreen()
+            calorie_tracker_menu()
+            break
+
+        # Weight Tracker
+        elif user_input == "3":
+            typingPrint("Loading Weight Tracker, please wait...\n".center(110))
+            clearScreen()
+            weight_tracker_menu()
+            break
+
+        # Food Items
+        elif user_input == "4":
+            typingPrint("Loading Food Items, please wait...\n".center(110))
+            clearScreen()
+            food_items_menu()
+            break
+
+            # Invalid input raises error
+        else:
+            validate_menu_data("main_menu")
+    
+def calorie_goal_menu():
+    """
+    Displays calorie goal submenu
+    Allows users to set a new daily calorie goal
+    Navigate back to main menu
+    """
+    # Loop repeats until valid input is received
+    while True:
+        print()
+        # Heading styles from https://textkool.com
+        print(Fore.WHITE + "∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫ₒ" + Fore.BLUE + "   CALORIE GOAL MENU   " + Fore.WHITE + "ₒ▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙")
+        print()
+        typingPrint("Please select one of the following options:\n")
+        print()
+        print("1. View Calorie Goal")
+        print("2. Back to Main Menu")
+
+        
+        user_input = input("> ")
+
+        # Update Calorie Goal
+        if user_input == "1":
+            typingPrint("Preparing to update, please wait...\n".center(110))
+            clearScreen()
+            print("Update Calorie Goal")
+            break
+
+        # Back to Main Menu
+        elif user_input == "2":
+            typingPrint("Loading Main Menu, please wait...\n".center(110))
+            clearScreen()
+            main_menu()
+            break
+
+        # Runs validation with users input
+        else:
+            validate_menu_data("calorie_goal_menu")
+    
+def validate_menu_data(current_menu):
+    """
+    Validates user input based on current menu
+    """
+    try:
+        user_input = input
+        call_error = ValueError()
+
+        if current_menu == "main_menu":
+            if user_input != "1" or "2" or "3" or "4":
+                call_error.strerror = "Select option 1 to 4"
+                raise call_error
+        
+        elif current_menu == "calorie_goal_menu":
+            if user_input != "1" or "2":
+                call_error.strerror = "Select option 1 or 2"
+                raise call_error
+    
+    except ValueError as e:
+        print()
+        print(Fore.RED + f"Invalid data: {e.strerror}, please try again.\n")
+         
+    return True
+    
+       
+    
+    
+    
+
+
+def food_items_menu():
+   print("Food Items")
+
+def weight_tracker_menu():
+   print("Weight Tracker")
+
+def calorie_tracker_menu():
+   print("Calorie Tracker")
+
+
 
 
 main()

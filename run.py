@@ -1,5 +1,4 @@
 # Libraries
-import datetime
 import os
 import sys
 import time
@@ -12,10 +11,10 @@ from collections import defaultdict
 from colorama import Back, Fore, Style
 from google.oauth2.service_account import Credentials
 from tabulate import tabulate
+from datetime import datetime
 
 # Initialize colorama for text formatting https://linuxhint.com/colorama-python/
 colorama.init(autoreset=True)
-
 
 # Scope for Google IAM for API access 
 # Tutorial from Code Institute Love Sandwiches Essential Project
@@ -72,7 +71,7 @@ def welcome_screen():
     ''')
 
     print("Welcome to Calorie Tracker.\n".center(110))
-    loadingMenu("           LOADING MENU, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
+    ##loadingMenu("           LOADING MENU, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
     print()
     time.sleep(0.5)
 
@@ -88,7 +87,7 @@ def loadingMenu(text, text_color = Fore.BLACK, background_color = Back.WHITE):
     for character in text:
         sys.stdout.write(text_color + background_color + character)
         sys.stdout.flush()
-        time.sleep(0.025)
+        time.sleep(0.01)
 
 def typingPrint(text):
   for character in text:
@@ -109,19 +108,20 @@ def clearScreen():
 
 def menu_navigation():
     main_menu()
-    calorie_goal_menu()
+
 
 def main_menu():
     """
     Runs the main menu of the program.
     Allows users to navigate through program.
+    Validates user input and provides feedback if input is invalid
     """
     # Loop repeats until valid input is received
     while True:
         print()
-        print(Fore.WHITE + "    ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫ₒ" + Fore.BLUE + "   MAIN MENU   " + Fore.WHITE + "ₒ▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙")
+        print(Fore.WHITE + "   ▌│█║▌║▌║▌│█║▌║▌║" + Fore.BLUE + "   MAIN MENU   " + Fore.WHITE + "║▌║▌║█│▌▌│█║▌║▌║")
         print()
-        typingPrint("   Please select one of the following options:\n".ljust(-50))
+        typingPrint("   Please select one of the following options:\n")
         print()
         print("     1. Calorie Goal")
         print("     2. Calorie Tracker")
@@ -173,6 +173,7 @@ def calorie_goal_menu():
     """
     Displays current calorie goal retrieved from sheet.
     Menu items allow users to set a new daily calorie goal and navigate back to main menu
+    Validates user input and provides feedback if input is invalid
     """
     # Gets the current calorie goal from worksheet to be displayed
     view_calorie_goal = calorie_goal.cell(2,2, value_render_option='FORMULA').value
@@ -181,7 +182,7 @@ def calorie_goal_menu():
     while True:
         print()
         # Heading styles from https://textkool.com
-        print(Fore.WHITE + "    ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫ₒ" + Fore.BLUE + "   CALORIE GOAL MENU   " + Fore.WHITE + "ₒ▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙")
+        print(Fore.WHITE + "   ▌│█║▌║▌║▌│█║▌║▌║" + Fore.BLUE + "   CALORIE GOAL MENU   " + Fore.WHITE + "║▌║▌║█│▌▌│█║▌║▌║")
         print()
         print(Fore.GREEN + f"   CURRENT CALORIE GOAL: {view_calorie_goal}")
         print()
@@ -215,38 +216,171 @@ def calorie_goal_menu():
     
     return user_input
 
+def calorie_tracker_menu():
+    """
+    Users ar able to manually enter new item.
+    Search and add items from food library.
+    View the calorie tracker log or return to the main menu.
+    Validates user input and provides feedback if input is invalid
+    """
     
-def validate_data(data, user_input):
-    """
-    Validates user input based on current menu
-    """
+    # Loop repeats until valid input is received
+    while True:
+        print()
+        # Heading styles from https://textkool.com
+        print(Fore.WHITE + "   ▌│█║▌║▌║▌│█║▌║▌║" + Fore.BLUE + "   CALORIE TRACKER MENU   " + Fore.WHITE + "║▌║▌║█│▌▌│█║▌║▌║")
+        print()
+        typingPrint("   Please select one of the following options:\n")
+        print()
+        print("     1. Manually Add New Item")
+        print("     2. Search Food Library")
+        print("     3. View Calorie Tracker Log")
+        print("     4. Back to Main Menu")
+        print()
 
-    try:  
-        call_error = ValueError()
+        user_input = input("    > ")
 
+        # Add New Item to Tracker
+        if user_input == "1":
+            print()
+            loadingMenu("           PREPARING NEW ITEM, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
+            clearScreen()
+            add_food_item()
+            break
+
+        # View Calorie Log
+        elif user_input == "2":
+            print()
+            loadingMenu("           LOADING FOOD LIBRARY, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
+            clearScreen()
+            print("Search Food Library")
+            break
+
+        # Back to Main Menu
+        elif user_input == "3":
+            print()
+            loadingMenu("           LOADING CALORIE TRACKER LOG, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
+            clearScreen()
+            main_menu()
+            break
+
+        # Back to Main Menu
+        elif user_input == "4":
+            print()
+            loadingMenu("           LOADING MAIN MENU, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
+            clearScreen()
+            main_menu()
+            break
+
+        # Runs validation with users input
+        else:
+            validate_data("calorie_tracker_menu", user_input)
+    
+    return user_input   
+
+def add_food_item():
+    """
+    Manually adds food item by creating an entry from each function using user input.
+    Each function requires a different method of validation
+    """
+    new_entry = []
+
+    def add_category():
+        # Loop repeats until valid input is received
+        # Add new date item to new entry
+        while True:
+            print()
+            # Heading styles from https://textkool.com
+            print(Fore.WHITE + "   ▌│█║▌║▌║▌│█║▌║▌║" + Fore.BLUE + "   ADD CATEGORY   " + Fore.WHITE + "║▌║▌║█│▌▌│█║▌║▌║")
+            print()
+            typingPrint("   Please Enter a Category for your Food Item:\n")
+            print("   eg.. Vegetable, Treat, Meat or give it a custom name so that it is easier to find when searching library\n")
+            print()
+
+            user_input = input("    > ")
+
+            new_category = user_input
+
+            if validate_data("add_category", user_input):
+                new_entry.append(new_category)
+                clearScreen()
+                print_new_entry()
+                return new_category
+    
+    
+    def print_new_entry():
+        print(new_entry)
+
+
+    def item_date():
+    # Loop repeats until valid input is received
+    # Add new category to new entry
+        while True:
+            print()
+            # Heading styles from https://textkool.com
+            print(Fore.WHITE + "   ▌│█║▌║▌║▌│█║▌║▌║" + Fore.BLUE + "   ADD ITEM   " + Fore.WHITE + "║▌║▌║█│▌▌│█║▌║▌║")
+            print()
+            typingPrint("   Please Enter Date for log entry:\n")
+            typingPrint("   Date format must be DD-MM-YYYY\n")
+            print()
+
+            user_input = input("    > ")
+
+            new_date = user_input
+
+            if validate_data("item_date", user_input):
+                clearScreen()
+                new_entry.append(new_date)
+                add_category()
+                return new_date
+            break
+
+    item_date()
+
+def validate_data(data, value):
+    """
+    Validates user input
+    """
+    try:
+        # Main Menu Validation  
         if data == "main_menu":
-            if user_input != "1" or "2" or "3" or "4":
-                call_error.strerror = "Select option 1 to 4"
-                raise call_error
+            if value != "1" or "2" or "3" or "4":
+                raise ValueError("Select option 1 to 4")
         
+        # Calorie Goal Menu Validation
         elif data == "calorie_goal_menu":
-            if user_input != "1" or "2":
-                call_error.strerror = "Select option 1 or 2"
-                raise call_error
-            
+            if value != "1" or "2":
+                raise ValueError("Select option 1 or 2")
+        
+        # Update Calorie Data Validation    
         elif data == "calorie_data":
-            if not (1500 <= user_input <= 4000):
-                call_error.strerror = "Select a goal between 1000 and 4000"
-                raise call_error
+            if not (1500 <= value <= 3500):
+                raise ValueError("Select a goal between 1500 and 3500")
+        
+        # Calorie Tracker Menu Validation    
+        elif data == "calorie_tracker_menu":
+            if value != "1" or "2" or "3" or "4":
+                raise ValueError("Select option 1 to 3")
+
+        # Add New Item, Date Format Validation    
+        elif data == "item_date":
+            format = "%d-%m-%Y"
+            if not datetime.strptime(value, format):
+                raise ValueError("Please enter date in correct format DD-MM-YYYY")
+        
+        # Add New Item, Category Format Validation 
+        elif data == "add_category":
+            if not value != "" and len(value) < 20 :
+                raise ValueError("Category must be between 0 and 30 characters")
+            
 
     
     except ValueError as e:
-        print()
-        print(Fore.RED + f"   Invalid data: {e.strerror}, please try again.\n")
-        return False
+            print()
+            print(Fore.RED + f"   Invalid data: {e}, please try again.\n")
+            return False
          
     return True
-
     
 def update_calorie_goal():
     while True:
@@ -264,7 +398,8 @@ def update_calorie_goal():
             calorie_goal_menu()
             break
     
-        
+
+    
         
 
 
@@ -274,8 +409,7 @@ def food_items_menu():
 def weight_tracker_menu():
    print("Weight Tracker")
 
-def calorie_tracker_menu():
-   print("Calorie Tracker")
+
 
 
 

@@ -40,9 +40,6 @@ weight_tracker = SHEET.worksheet("weight_tracker")
 food_items = SHEET.worksheet("food_items")
 
 
-#find_food_item =  re.compile(r"peanuts")
-#food_result = food_items.findall(find_food_item)
-
 
 # ASCII art generator: https://manytools.org/hacker-tools/ascii-banner/
 def welcome_screen():
@@ -248,12 +245,12 @@ def calorie_tracker_menu():
             add_food_item()
             break
 
-        # View Calorie Log
+        # Search Food Log
         elif user_input == "2":
             print()
             loadingMenu("           LOADING FOOD LIBRARY, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
             clearScreen()
-            print("Search Food Library")
+            search_food_library()
             break
 
         # Back to Main Menu
@@ -337,6 +334,78 @@ def add_food_item():
 
     item_date()
 
+def search_food_library():
+    """
+    """
+    print()
+    # Heading styles from https://textkool.com
+    print(Fore.WHITE + "   ▌│█║▌║▌║▌│█║▌║▌║" + Fore.BLUE + "   SEARCH FOOD LIBRARY   " + Fore.WHITE + "║▌║▌║█│▌▌│█║▌║▌║")
+    print()
+
+    def select_food_item():
+        print()
+        typingPrint("   Select a number from the first colum to add food item:\n")
+        print()
+
+        user_input = int(input("    > "))
+
+        selected_item = []
+        
+        for i in search_item_list:
+            if user_input == search_item_list.index(i):
+                selected_item.append(search_item_list[user_input])
+                if user_input != search_item_list.index(i):
+                    print("   Select a number from the first colum:\n")
+        
+        clearScreen()
+        print()
+        print("   You have selected the following item:")
+        print()
+        headers = ["Category", "Food Item", "Total kCal"]
+        print(tabulate(selected_item, headers, tablefmt="grid"))
+        print()
+
+
+    # Loop repeats until valid input is received
+    while True:
+        typingPrint("   Please type the food item you are looking for:\n")
+
+        print()
+
+        user_input = input("    > ")
+
+        if validate_data("search_food_library", user_input): 
+            search_items = re.compile(user_input.capitalize())
+            get_food_items = food_items.findall(search_items)
+            
+            search_items = []
+            
+            for x in get_food_items:
+                item = x._row
+                item_row = food_items.row_values(item)
+                search_items.append(item_row)
+
+            def validate_food_search():
+                if len(search_items) == 0:
+                    print()
+                    print(Fore.RED + "   There are no items matching your search criteria")
+                    print()
+            
+                else:
+                    # Removes duplicates from list    
+                    global search_item_list
+                    search_item_list = []
+                    [search_item_list.append(x) for x in search_items if x not in search_item_list]  
+
+                    search_headers = ["Category", "Food Item", "Total kCal"]
+                    search_table = tabulate(search_item_list, search_headers, tablefmt="grid", showindex="always")
+                    print(search_table)
+                    select_food_item()
+            
+            validate_food_search()
+
+        return False
+
 def validate_data(data, value):
     """
     Validates user input
@@ -372,6 +441,11 @@ def validate_data(data, value):
         elif data == "add_category":
             if not value != "" and len(value) < 20 :
                 raise ValueError("Category must be between 0 and 30 characters")
+            
+        # 
+        elif data == "search_food_library":
+            if len(value) < 3 :
+                raise ValueError("Search must be greater than 3 characters")
             
 
     

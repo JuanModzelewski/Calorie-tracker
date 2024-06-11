@@ -173,10 +173,9 @@ def calorie_tracker_menu():
     print(Fore.WHITE + "   ▌│█║▌║▌║▌│█║▌║▌║" + Fore.BLUE + "   CALORIE TRACKER MENU   " + Fore.WHITE + "║▌║▌║█│▌▌│█║▌║▌║")
     print()
     print(Fore.GREEN + f"   CURRENT CALORIE GOAL: {view_calorie_goal}")
+    print(Fore.CYAN + f"   CURRENT CALORIE GOAL: {view_calorie_goal}")
     print()
-    print(Fore.GREEN + f"   CURRENT CALORIE GOAL: {view_calorie_goal}")
-    print()
-    print(Fore.BLUE + "   CURRENTLY TRACKED ITEMS")
+    print(Fore.BLUE + "   CURRENTLY TRACKED ITEMS:")
     print(tabulate(view_calorie_tracker, tablefmt="grid"))
     
     # Loop repeats until valid input is received
@@ -242,7 +241,7 @@ def add_food_item():
     new_entry.append(date_entry)
     item_table = []
     item_table.append(new_entry)
-    headers = ["Date", "Meal", "Category", "Name", "kCal per 100g", "Serving Size (g)"]
+    headers = ["Date", "Meal", "Name", "kCal per 100g", "Serving Size (g)"]
 
     def item_confirmation():
         """
@@ -252,8 +251,10 @@ def add_food_item():
         print(tabulate(item_table, headers, tablefmt="grid"))
         print()
 
-        item_calories_per_g = int(new_entry[4]) / 100
-        item_total_calories = [item_calories_per_g * int(new_entry[5])]
+        item_calories_per_g = float(new_entry[3]) / 100
+        item_total_calories = [item_calories_per_g * float(new_entry[4])]
+
+        print(new_entry)
 
         while True:
             print()
@@ -267,17 +268,17 @@ def add_food_item():
             user_input = input("    > ")
 
             if user_input == "1":
-                date = slice(0,2)
-                meal_name = slice(3,4)
-                serving_size = slice(5,6)
-                calorie_tracker.append_row(new_entry[date] + new_entry[meal_name] + new_entry[serving_size] + item_total_calories)
+                date_meal_name = slice(0,3)
+                serving_size = slice(4,5)
+                calorie_tracker.append_row(new_entry[date_meal_name] + new_entry[serving_size]  + item_total_calories)
+                print()
                 loadingMenu("           ADDING ITEM TO TRACKER, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
                 clearScreen()
                 calorie_tracker_menu()
                 break
 
             elif user_input == "2":
-                food_library.append_row(new_entry[2:5])
+                food_library.append_row(new_entry[2:4])
                 print()
                 loadingMenu("           ADDING ITEM TO LIBRARY, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
                 print()
@@ -346,24 +347,6 @@ def add_food_item():
                 item_calories()
                 break
 
-    def item_category():
-        """
-        """
-        while True:
-            print()
-            typingPrint("   Please Enter a Category for your Food Item:\n")
-            print("   eg Fruit, Vegetable, Grains, Meat, \n")
-            print()
-
-            user_input = input("    > ")
-
-            new_category = user_input.capitalize()
-
-            if validate_data("item_category", user_input):
-                new_entry.append(new_category)
-                item_name()
-                break
-
     def item_meal():
         """
         """
@@ -381,23 +364,23 @@ def add_food_item():
 
             if user_input == "1":
                 new_entry.append("Breakfast")
-                item_category()
+                item_name()
                 clearScreen()
                 break
 
             elif user_input == "2":
                 new_entry.append("Lunch")
-                item_category()
+                item_name()
                 break
 
             elif user_input == "3":
                 new_entry.append("Dinner")
-                item_category()
+                item_name()
                 break
 
             elif user_input == "4":
                 new_entry.append("Snack")
-                item_category()
+                item_name()
                 break    
 
             else:
@@ -412,7 +395,6 @@ def search_food_library():
         date = datetime.now()
         date_entry = date.strftime("%d-%m-%Y")
         selected_flat_list.insert(0, date_entry)
-        del selected_flat_list[2]
         calories_per_g =float(selected_flat_list[3]) / 100
         total_item_calories = calories_per_g * float(selected_flat_list[4])
         selected_flat_list.append(total_item_calories)
@@ -441,7 +423,6 @@ def search_food_library():
                 clearScreen()
                 calorie_tracker_menu()
                 
-
     def search_meal():
         """
         """
@@ -484,13 +465,12 @@ def search_food_library():
     def add_selected_item():
         print()
         print(Fore.BLUE + "   YOUR SELECTION:")
-        headers = ["Category", "Food Item", "kCal per 100g"]
+        headers = ["Food Item", "kCal per 100g"]
         print(tabulate(selected_item, headers, tablefmt="grid"))
-        print()
 
         while True:
             print()
-            typingPrint("   Please select one of the following options:\n")
+            typingPrint("   Please confirm your selection:\n")
             print()
             print("     1. Add Item to Tracker")
             print("     2. Back to Search")   
@@ -570,7 +550,7 @@ def search_food_library():
                     search_item_list = []
                     [search_item_list.append(x) for x in search_items if x not in search_item_list]  
 
-                    search_headers = ["Category", "Food Item", "kCal per 100g"]
+                    search_headers = ["Food Item", "kCal per 100g"]
                     search_table = tabulate(search_item_list, search_headers, tablefmt="grid", showindex="always")
                     print(search_table)
                     select_food_item()
@@ -603,11 +583,6 @@ def validate_data(data, value):
         elif data == "item_meal":
             if value != "1" or "2" or "3" or "4":
                 raise ValueError("Select option 1 to 4")
- 
-        # Add New Item, Category Format Validation 
-        elif data == "item_category":
-            if not value != "" or len(value) > 20 :
-                raise ValueError("Category must be between 0 and 20 characters")
             
         elif data == "item_name":
             if not value != "" or len(value) > 30 :

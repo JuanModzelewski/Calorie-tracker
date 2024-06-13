@@ -567,7 +567,7 @@ def remove_tracked_item():
     print(f"{MENU_HEADING_STYLE}{TITLE}{MENU_HEADING_STYLE}".center(10))
     print()
     print(THREE_SPACE + Fore.BLUE + "CURRENTLY TRACKED ITEMS:")
-    print(tabulate(view_calorie_tracker, tablefmt="rounded_grid",showindex="always", maxcolwidths=[None, None, None, 30, 10, 10]))
+    print(tabulate(view_calorie_tracker, tablefmt="rounded_grid",showindex="always", maxcolwidths=[None, None, 30, 10, 10]))
     print()
     typingPrint(THREE_SPACE + "Select a number from the first colum to remove food item:\n")
     print()

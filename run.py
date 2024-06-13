@@ -69,21 +69,21 @@ def welcome_screen():
             88       88      `8b  d8'          `8b  `"Y8888Y"'   88       Y8b  88888888888  88      `8b                                                                                                                                                                                                                                                                                                                               
     ''')
 
-    print(Fore.BLUE + "WELCOME TO CALORIE TRACKER".center(110))
-    print("Your daily calorie tracking tool to ensure you meet your".center(110))
-    print("calorie requirements and achieve you goals.\n".center(110))
-    print(Fore.BLUE + "GETTING STARTED".center(110))
-    print("Set your calorie goal in the calorie tracker menu.".center(110))
-    print("Manually add an entry or search the Food Library.".center(110))
-    print("Items can be added to Food Library by Manually adding".center(110))
-    print("an item and choosing to save to library.".center(110))
+    print(Fore.BLUE + "         WELCOME TO CALORIE TRACKER")
+    print("     Your daily calorie tracking tool to ensure you meet your")
+    print("         calorie requirements and achieve you goals.\n")
+    print(Fore.BLUE + "         GETTING STARTED")
+    print("     Set your calorie goal in the calorie tracker menu.")
+    print("     Manually add an entry or search the Food Library.")
+    print("     Items can be added to Food Library by Manually adding")
+    print("         an item and choosing to save to library.")
     print()
-    user_input = input(Fore.GREEN + "PRESS ENTER TO CONTINUE".center(110))
+    user_input = input(Fore.GREEN + "PRESS ENTER TO CONTINUE")
     time.sleep(0.5)
 
     if user_input == "":
         print()
-        loadingMenu("           LOADING MAIN MENU, PLEASE WAIT...           ".center(110), Fore.BLACK, Back.WHITE)
+        loadingMenu("           LOADING MAIN MENU, PLEASE WAIT...           ", Fore.BLACK, Back.WHITE)
         clearScreen()
         main_menu()
 

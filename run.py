@@ -201,7 +201,7 @@ def calorie_tracker_menu():
     print(Fore.YELLOW + f"   REMAINING CALORIES: {round(remaining_calories, 2)}")
     print()
     print(Fore.BLUE + "   CURRENTLY TRACKED ITEMS:")
-    print(tabulate(view_calorie_tracker, tablefmt="github",maxcolwidths=[None, 8]))
+    print(tabulate(view_calorie_tracker, tablefmt="github",maxcolwidths=[None]))
 
     print()
     typingPrint("   Please select one of the following options:\n")
@@ -291,7 +291,7 @@ def add_food_item():
         """
         print()
         print(Fore.BLUE + "   ENTRY PREVIEW")
-        print(tabulate(item_table, headers, tablefmt="github", maxcolwidths=[None, 8]))
+        print(tabulate(item_table, headers, tablefmt="github", maxcolwidths=[None]))
         print()
 
         # Serving Calories
@@ -547,7 +547,7 @@ def search_food_library():
         print()
         print(Fore.BLUE + "   YOUR SELECTION:")
         headers = ["Food Item", "kCal per 100g"]
-        print(tabulate(selected_item, headers, tablefmt="github",maxcolwidths=[None, 8]))
+        print(tabulate(selected_item, headers, tablefmt="github",maxcolwidths=[None]))
 
         while True:
             print()
@@ -667,7 +667,7 @@ def search_food_library():
                     [search_item_list.append(x) for x in search_items if x not in search_item_list]  
 
                     search_headers = ["Food Item", "kCal per 100g"]
-                    search_table = tabulate(search_item_list, search_headers, tablefmt="github", showindex="always",maxcolwidths=[None, 8])
+                    search_table = tabulate(search_item_list, search_headers, tablefmt="github", showindex="always",maxcolwidths=[None])
                     clearScreen()
                     print(Fore.BLUE + "   AVAILABLE OPTIONS:")
                     print(search_table)

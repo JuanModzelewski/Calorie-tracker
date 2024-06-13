@@ -7,11 +7,13 @@ import colorama
 import gspread
 import re
 
+import datetime
+
 from collections import defaultdict
 from colorama import Back, Fore, Style
 from google.oauth2.service_account import Credentials
 from tabulate import tabulate
-from datetime import datetime
+
 
 # Initialize colorama for text formatting https://linuxhint.com/colorama-python/
 colorama.init(autoreset=True)
@@ -112,7 +114,6 @@ def clearScreen():
 def menu_navigation():
     main_menu()
     
-
 # Main Menu
 def main_menu():
     """

@@ -1,5 +1,5 @@
 # Libraries
-import os
+from os import system, name
 import sys
 import time
 
@@ -108,7 +108,13 @@ def typingInput(text):
   return value
 
 def clear_screen():
-  os.system('cls' if os.name == 'nt' else 'clear') 
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+ 
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
 def load_calorie_goal():
     #TITLE = THREE_SPACE + "CALORIE GOAL MENU" + THREE_SPACE, Fore.BLUE
@@ -597,7 +603,7 @@ def remove_tracked_item():
     print(f"{MENU_HEADING_STYLE}{TITLE}{MENU_HEADING_STYLE}".center(10))
     print()
     print(THREE_SPACE + Fore.BLUE + "CURRENTLY TRACKED ITEMS:")
-    print(tabulate(view_calorie_tracker, tablefmt="rounded_grid",showindex="always", maxcolwidths=[None, None, 30, 10, 10]))
+    print(tabulate(view_calorie_tracker, tablefmt="rounded_grid",showindex="always", maxcolwidths=[None, None, None, 28, 10, 10]))
     print()
     typingPrint(THREE_SPACE + "Select a number from the first colum to remove food item:\n")
     print()

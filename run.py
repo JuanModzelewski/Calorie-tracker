@@ -65,25 +65,22 @@ def welcome_screen():
     """
     Displays Banner and welcome message
     """
-    # Logo
-
-
-    print(Fore.BLUE + "WELCOME TO CALORIE TRACKER".center(10))
-    print("Your daily calorie tracking tool to ensure you meet your".center(10))
-    print("calorie requirements and achieve you goals.\n".center(10))
-    print(Fore.BLUE + "GETTING STARTED".center(10))
-    print("Set your calorie goal in the calorie tracker menu.".center(10))
-    print("Manually add an entry or search the Food Library.".center(10))
-    print("Items can be added to Food Library by Manually adding".center(10))
-    print("an item and choosing to save to library.".center(10))
+    print(Fore.BLUE + "WELCOME TO CALORIE TRACKER".center(70))
+    print("Your daily calorie tracking tool to ensure you meet your".center(70))
+    print("calorie requirements and achieve you goals.\n".center(70))
+    print(Fore.BLUE + "GETTING STARTED".center(70))
+    print("Set your calorie goal in the calorie tracker menu.".center(70))
+    print("Manually add an entry or search the Food Library.".center(70))
+    print("Items can be added to Food Library by Manually adding".center(70))
+    print("an item and choosing to save to library.".center(70))
     print()
-    user_input = input(Fore.GREEN + "PRESS ENTER TO CONTINUE".center(10))
+    user_input = input(Fore.GREEN + "PRESS ENTER TO CONTINUE".center(70))
     time.sleep(0.5)
 
     if user_input == "":
         print()
-        loadingMenu(f"{EIGHT_SPACE} LOADING CALORIE TRACKER, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
-        clear_screen()
+        loadingMenu(f"{EIGHT_SPACE} LOADING CALORIE TRACKER, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+        pause_and_clear()
         calorie_tracker_menu()
 
 # Concept and tutorial used from https://www.101computing.net/python-typing-text-effect/
@@ -99,13 +96,12 @@ def typingPrint(text):
     sys.stdout.flush()
     time.sleep(0.02)
 
-def typingInput(text):
-  for character in text:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.02)
-  value = input()  
-  return value
+def pause_and_clear():
+    """
+    Clears screen after a brief pause.
+    """
+    time.sleep(1.5)
+    clear_screen()
 
 def clear_screen():
     # for windows
@@ -119,29 +115,29 @@ def clear_screen():
 def load_calorie_goal():
     #TITLE = THREE_SPACE + "CALORIE GOAL MENU" + THREE_SPACE, Fore.BLUE
     print()
-    loadingMenu(f"{EIGHT_SPACE} LOADING CALORIE GOAL, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
-    clear_screen()
+    loadingMenu(f"{EIGHT_SPACE} LOADING CALORIE GOAL, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+    pause_and_clear()
     update_calorie_goal()
 
 def load_add_new_item():
     #TITLE = THREE_SPACE + Fore.BLUE + "NEW ITEM MENU" + THREE_SPACE
     print()
-    loadingMenu(f"{EIGHT_SPACE} PREPARING NEW ITEM, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
-    clear_screen()
+    loadingMenu(f"{EIGHT_SPACE} PREPARING NEW ITEM, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+    pause_and_clear()
     add_food_item()
 
 def load_remove_tracked():
     #TITLE = THREE_SPACE + Fore.BLUE + "REMOVE ITEMS FROM TRACKER" + THREE_SPACE
     print()
-    loadingMenu(f"{EIGHT_SPACE} LOADING ITEMS, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
-    clear_screen()
+    loadingMenu(f"{EIGHT_SPACE} LOADING ITEMS, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+    pause_and_clear()
     remove_tracked_item()
 
 def load_search_library():
     #TITLE = THREE_SPACE + Fore.BLUE + "SEARCH FOOD LIBRARY" + THREE_SPACE
     print()
-    loadingMenu(f"{EIGHT_SPACE} PREPARING TO SEARCH, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
-    clear_screen()
+    loadingMenu(f"{EIGHT_SPACE} PREPARING TO SEARCH, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+    pause_and_clear()
     search_food_library()
 
 # Calorie Tracker Menu
@@ -176,13 +172,13 @@ def calorie_tracker_menu():
 
     print()
     # Heading styles from https://textkool.com
-    print(f"{MENU_HEADING_STYLE}{TITLE}{MENU_HEADING_STYLE}")
+    print(f"{MENU_HEADING_STYLE}{TITLE}{MENU_HEADING_STYLE}".center(70))
     print()
     print(THREE_SPACE + Fore.GREEN + f"CURRENT CALORIE GOAL: {round(view_calorie_goal, 2)}")
     print(THREE_SPACE + Fore.YELLOW + f"REMAINING CALORIES: {round(remaining_calories, 2)}")
     print()
     print(Fore.BLUE + "CURRENTLY TRACKED ITEMS:")
-    print(tabulate(view_calorie_tracker, tablefmt="rounded_grid",maxcolwidths=[None, None, 30, 10, 10]))
+    print(tabulate(view_calorie_tracker, tablefmt="rounded_grid",maxcolwidths=[10, 9, 25, 8, 8]))
     print()
     print(THREE_SPACE + "Select one of following options:")
     print()
@@ -228,7 +224,7 @@ def add_food_item():
         """
         print()
         print(THREE_SPACE + "ENTRY PREVIEW", Fore.BLUE)
-        print(tabulate(item_table, headers, tablefmt="rounded_grid",maxcolwidths=[None, None, 30, 10, 10]))
+        print(tabulate(item_table, headers, tablefmt="rounded_grid",maxcolwidths=[None, None, 25, 8, 8]))
         print()
 
         # Serving Calories
@@ -250,17 +246,17 @@ def add_food_item():
                 serving_size = slice(4,5)
                 calorie_tracker.append_row(new_entry[date_meal_name] + new_entry[serving_size]  + item_total_calories)
                 print()
-                loadingMenu(f"{EIGHT_SPACE} ADDING ITEM TO TRACKER, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
-                clear_screen()
+                loadingMenu(f"{EIGHT_SPACE} ADDING ITEM TO TRACKER, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+                pause_and_clear()
                 calorie_tracker_menu()
                 break
 
             elif user_input == "2":
                 food_library.append_row(new_entry[2:4])
                 print()
-                loadingMenu(f"{EIGHT_SPACE} ADDING ITEM TO LIBRARY, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
+                loadingMenu(f"{EIGHT_SPACE} ADDING ITEM TO LIBRARY, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
                 print()
-                clear_screen()
+                pause_and_clear()
                 item_confirmation()
                 break
 
@@ -287,7 +283,7 @@ def add_food_item():
 
             if validate_data(DataType.INTEGER, user_input): 
                 new_entry.append(int(user_input))
-                clear_screen()
+                pause_and_clear()
                 item_confirmation()
                 break
     
@@ -348,7 +344,7 @@ def add_food_item():
 
             if user_input in ["1", "2", "3", "4"]:
               new_entry.insert(1, MEAL_TYPES[int(user_input) - 1])
-              clear_screen()
+              pause_and_clear()
               item_name()
               break
             
@@ -383,7 +379,7 @@ def search_food_library():
 
         # Item added to calorie tracker sheet
         calorie_tracker.append_row(selected_flat_list)
-        clear_screen()
+        pause_and_clear()
         search_food_library()
 
     # Serving size for item
@@ -403,9 +399,9 @@ def search_food_library():
                 selected_flat_list.append(int(user_input))
                 add_search_item()
                 print()
-                loadingMenu(f"{EIGHT_SPACE} ADDING ITEM TO TRACKER, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
+                loadingMenu(f"{EIGHT_SPACE} ADDING ITEM TO TRACKER, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
                 time.sleep(0.5)
-                clear_screen()
+                pause_and_clear()
                 calorie_tracker_menu()
                 break
 
@@ -429,7 +425,7 @@ def search_food_library():
             if user_input in ["1", "2", "3", "4"]:
               selected_flat_list.insert(0, MEAL_TYPES[int(user_input) - 1])
               search_serving()
-              clear_screen()
+              pause_and_clear()
               break
             
             else:
@@ -461,12 +457,12 @@ def search_food_library():
             user_input = input("    > ")
 
             if user_input == "1": 
-                clear_screen() 
+                pause_and_clear() 
                 search_meal()
                 break
             
             elif user_input == "2": 
-                clear_screen()
+                pause_and_clear()
                 search_food_library() 
                 break
 
@@ -499,7 +495,7 @@ def search_food_library():
                 for i in search_item_list:
                     if user_input == search_item_list.index(i):
                         selected_item.append(search_item_list[user_input])
-                        clear_screen()
+                        pause_and_clear()
                         confirm_selected_item()
                         break
 
@@ -524,7 +520,7 @@ def search_food_library():
 
         print()
         # Heading styles from https://textkool.com
-        print(f"{MENU_HEADING_STYLE}{TITLE}{MENU_HEADING_STYLE}")
+        print(f"{MENU_HEADING_STYLE}{TITLE}{MENU_HEADING_STYLE}".center(70))
         print()
         typingPrint(THREE_SPACE + "Please type the food item you are looking for:\n")
         print()
@@ -547,11 +543,11 @@ def search_food_library():
                     item = x._row
                     item_row = food_library.row_values(item)
                     search_items.append(item_row)
-                    break
+                    
 
                 # Allows user to exit search
                 if user_input == "exit":
-                    clear_screen()
+                    pause_and_clear()
                     calorie_tracker_menu()
                     break
             
@@ -575,7 +571,7 @@ def search_food_library():
                     search_headers = ["Food Item", "kCal per 100g"]
                     search_item_list.insert(0, search_headers)
                     search_table = tabulate(search_item_list, tablefmt="rounded_grid", showindex="always",maxcolwidths=[30, None, None])
-                    clear_screen()
+                    pause_and_clear()
                     print(THREE_SPACE + Fore.BLUE + "AVAILABLE OPTIONS:")
                     print(search_table)
                     select_food_item()
@@ -600,10 +596,10 @@ def remove_tracked_item():
 
     TITLE = THREE_SPACE + Fore.BLUE + "REMOVE ITEMS MENU" + THREE_SPACE
 
-    print(f"{MENU_HEADING_STYLE}{TITLE}{MENU_HEADING_STYLE}".center(10))
+    print(f"{MENU_HEADING_STYLE}{TITLE}{MENU_HEADING_STYLE}".center(70))
     print()
     print(THREE_SPACE + Fore.BLUE + "CURRENTLY TRACKED ITEMS:")
-    print(tabulate(view_calorie_tracker, tablefmt="rounded_grid",showindex="always", maxcolwidths=[None, None, None, 28, 10, 10]))
+    print(tabulate(view_calorie_tracker, tablefmt="rounded_grid",showindex="always", maxcolwidths=[5, 10, 9, 25, 8, 8]))
     print()
     typingPrint(THREE_SPACE + "Select a number from the first colum to remove food item:\n")
     print()
@@ -614,7 +610,7 @@ def remove_tracked_item():
         user_input = input("    > ")
 
         if user_input == "exit":
-            clear_screen()
+            pause_and_clear()
             calorie_tracker_menu()
             break
 
@@ -626,7 +622,7 @@ def remove_tracked_item():
                 if int(user_input) == view_calorie_tracker.index(i):
                     calorie_tracker.delete_rows(int(user_input)+1)
                     print()
-                    loadingMenu(f"{EIGHT_SPACE} REMOVING ITEM, PLEASE WAIT {EIGHT_SPACE}".center(10), Fore.BLACK, Back.WHITE)
+                    loadingMenu(f"{EIGHT_SPACE} REMOVING ITEM, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
                     print()
                     load_remove_tracked()
                     break
@@ -709,9 +705,9 @@ def update_calorie_goal():
 
         if validate_data("calorie_data", user_input):
             print()
-            loadingMenu(f"{FIVE_SPACE} UPDATING CALORIE GOAL, PLEASE WAIT {FIVE_SPACE}".center(10), Fore.BLACK, Back.WHITE)
+            loadingMenu(f"{FIVE_SPACE} UPDATING CALORIE GOAL, PLEASE WAIT {FIVE_SPACE}".center(70), Fore.BLACK, Back.WHITE)
             calorie_goal.update_cell(2,2, user_input)
-            clear_screen()
+            pause_and_clear()
             calorie_tracker_menu()
 
             if validate_data(DataType.INTEGER, user_input): update_calorie_goal()

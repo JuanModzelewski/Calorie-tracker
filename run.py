@@ -112,34 +112,6 @@ def clear_screen():
     else:
         _ = system('clear')
 
-def load_calorie_goal():
-    #TITLE = THREE_SPACE + "CALORIE GOAL MENU" + THREE_SPACE, Fore.BLUE
-    print()
-    loadingMenu(f"{EIGHT_SPACE} LOADING CALORIE GOAL, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
-    pause_and_clear()
-    update_calorie_goal()
-
-def load_add_new_item():
-    #TITLE = THREE_SPACE + Fore.BLUE + "NEW ITEM MENU" + THREE_SPACE
-    print()
-    loadingMenu(f"{EIGHT_SPACE} PREPARING NEW ITEM, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
-    pause_and_clear()
-    add_food_item()
-
-def load_remove_tracked():
-    #TITLE = THREE_SPACE + Fore.BLUE + "REMOVE ITEMS FROM TRACKER" + THREE_SPACE
-    print()
-    loadingMenu(f"{EIGHT_SPACE} LOADING ITEMS, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
-    pause_and_clear()
-    remove_tracked_item()
-
-def load_search_library():
-    #TITLE = THREE_SPACE + Fore.BLUE + "SEARCH FOOD LIBRARY" + THREE_SPACE
-    print()
-    loadingMenu(f"{EIGHT_SPACE} PREPARING TO SEARCH, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
-    pause_and_clear()
-    search_food_library()
-
 # Calorie Tracker Menu
 def calorie_tracker_menu():
     """
@@ -151,7 +123,7 @@ def calorie_tracker_menu():
     Return to the main menu
     Validates user input and provides feedback if input is invalid
     """
-    clear_screen()
+    
     TITLE = THREE_SPACE + Fore.BLUE + "CALORIE TRACKER MENU" + THREE_SPACE
     CALORIE_TRACKER_MENU = ["Update Calorie Goal", "Manually Add Food Item", "Search & Add From Library", "Remove Item From Tracker"]
 
@@ -193,11 +165,38 @@ def calorie_tracker_menu():
 
         user_input = input("    > ")
 
-        load_calorie_goal() if user_input == "1" else validate_data(DataType.FOUR_MENU_ITEMS, user_input)
-        load_add_new_item() if user_input =="2" else validate_data(DataType.FOUR_MENU_ITEMS, user_input)
-        load_search_library() if user_input == "3" else validate_data(DataType.FOUR_MENU_ITEMS, user_input)
-        load_remove_tracked() if user_input == "4" else validate_data(DataType.FOUR_MENU_ITEMS, user_input)
-        break
+        if user_input == "1":
+            #TITLE = THREE_SPACE + "CALORIE GOAL MENU" + THREE_SPACE, Fore.BLUE
+            print()
+            loadingMenu(f"{EIGHT_SPACE} LOADING CALORIE GOAL, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+            pause_and_clear()
+            update_calorie_goal()
+            break
+
+        elif user_input =="2":
+            #TITLE = THREE_SPACE + Fore.BLUE + "NEW ITEM MENU" + THREE_SPACE
+            print()
+            loadingMenu(f"{EIGHT_SPACE} PREPARING NEW ITEM, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+            pause_and_clear()
+            add_food_item()
+            break
+
+        elif user_input == "3":
+            #TITLE = THREE_SPACE + Fore.BLUE + "SEARCH FOOD LIBRARY" + THREE_SPACE
+            print()
+            loadingMenu(f"{EIGHT_SPACE} PREPARING TO SEARCH, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+            pause_and_clear()
+            search_food_library()
+            break
+        
+        elif user_input == "4":
+            #TITLE = THREE_SPACE + Fore.BLUE + "REMOVE ITEMS FROM TRACKER" + THREE_SPACE
+            print()
+            loadingMenu(f"{EIGHT_SPACE} LOADING ITEMS, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
+            pause_and_clear()
+            remove_tracked_item()
+            break
+        
 
 # Manually add Food Items / Calorie Tracker Menu
 def add_food_item():
@@ -514,8 +513,7 @@ def search_food_library():
         If item is found the item row is added to a list
         Results are tabulated and displayed
         """
-        clear_screen()
-        
+
         TITLE = THREE_SPACE + Fore.BLUE + "SEARCH FOOD LIBRARY" + THREE_SPACE
 
         print()
@@ -591,7 +589,6 @@ def remove_tracked_item():
     unavailable index input cannot be selected and only numbers can be entered
     If input is valid items from corresponding row are removed from calorie tracker sheet
     """
-    clear_screen()
     global view_calorie_tracker
     view_calorie_tracker = calorie_tracker.get_all_values()
 

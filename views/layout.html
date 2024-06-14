@@ -24,6 +24,8 @@
             user-select: none;
             -ms-user-select: none;
             -webkit-user-select: none;
+            width: 730px;
+            height: 730px;
         }
 
         .xterm.focus,
@@ -42,7 +44,7 @@
         }
 
         .xterm .xterm-helper-textarea {
-            padding: 1rem;
+            padding: 0;
             border: 0;
             margin: 0;
             /* Move textarea out of the screen to the far left, so that the cursor is not visible */
@@ -71,6 +73,8 @@
 
         .xterm .composition-view.active {
             display: block;
+            width: 730px;
+            height: 730px;
         }
 
         .xterm .xterm-viewport {
@@ -84,18 +88,22 @@
             top: 0;
             bottom: 0;
             background-color: rgb(0, 0, 0);
-            width: 850px;
-            height: 850px
+            width: 730px;
+            height: 730px;
         }
 
         .xterm .xterm-screen {
             position: relative;
+            width: 730px;
+            height: 730px;
         }
 
         .xterm .xterm-screen canvas {
             position: absolute;
             left: 0;
             top: 0;
+            width: 730px;
+            height: 730px;
         }
 
         .xterm .xterm-scroll-area {

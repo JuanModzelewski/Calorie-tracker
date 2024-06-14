@@ -572,7 +572,7 @@ def search_food_library():
 
                     search_headers = ["Food Item", "kCal per 100g"]
                     search_item_list.insert(0, search_headers)
-                    search_table = tabulate(search_item_list, tablefmt="rounded_grid", showindex="always", maxcolwidths=[None, 30, 10])
+                    search_table = tabulate(search_item_list, tablefmt="rounded_grid", showindex="always", maxcolwidths=[None, 35, 10])
                     pause_and_clear()
                     print(THREE_SPACE + Fore.BLUE + "AVAILABLE OPTIONS:")
                     print(search_table)

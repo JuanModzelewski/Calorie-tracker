@@ -151,6 +151,7 @@ def calorie_tracker_menu():
     Return to the main menu
     Validates user input and provides feedback if input is invalid
     """
+    clear_screen()
     TITLE = THREE_SPACE + Fore.BLUE + "CALORIE TRACKER MENU" + THREE_SPACE
     CALORIE_TRACKER_MENU = ["Update Calorie Goal", "Manually Add Food Item", "Search & Add From Library", "Remove Item From Tracker"]
 
@@ -266,7 +267,6 @@ def add_food_item():
                 
             else:
                 validate_data(DataType.THREE_MENU_ITEMS, user_input)
-
 
     # Add Serving Size to list
     def item_serving():
@@ -431,7 +431,6 @@ def search_food_library():
             else:
                 validate_data(DataType.FOUR_MENU_ITEMS, user_input)
 
-
     # Confirmation of selected item
     def confirm_selected_item():
         """
@@ -469,7 +468,6 @@ def search_food_library():
             else: 
                 validate_data(DataType.TWO_MENU_ITEMS, user_input)
             
-
     # Select Food Item from search_item_list
     def select_food_item():
         """
@@ -516,6 +514,8 @@ def search_food_library():
         If item is found the item row is added to a list
         Results are tabulated and displayed
         """
+        clear_screen()
+        
         TITLE = THREE_SPACE + Fore.BLUE + "SEARCH FOOD LIBRARY" + THREE_SPACE
 
         print()
@@ -570,7 +570,7 @@ def search_food_library():
 
                     search_headers = ["Food Item", "kCal per 100g"]
                     search_item_list.insert(0, search_headers)
-                    search_table = tabulate(search_item_list, tablefmt="rounded_grid", showindex="always",maxcolwidths=[30, None, None])
+                    search_table = tabulate(search_item_list, tablefmt="rounded_grid", showindex="always", maxcolwidths=[5, 10, 9, 25, 8, 8])
                     pause_and_clear()
                     print(THREE_SPACE + Fore.BLUE + "AVAILABLE OPTIONS:")
                     print(search_table)
@@ -591,6 +591,7 @@ def remove_tracked_item():
     unavailable index input cannot be selected and only numbers can be entered
     If input is valid items from corresponding row are removed from calorie tracker sheet
     """
+    clear_screen()
     global view_calorie_tracker
     view_calorie_tracker = calorie_tracker.get_all_values()
 

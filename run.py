@@ -170,6 +170,7 @@ def calorie_tracker_menu():
             print()
             loadingMenu(f"{EIGHT_SPACE} LOADING CALORIE GOAL, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
             pause_and_clear()
+            sys.stdout.flush()
             update_calorie_goal()
             break
 
@@ -178,6 +179,7 @@ def calorie_tracker_menu():
             print()
             loadingMenu(f"{EIGHT_SPACE} PREPARING NEW ITEM, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
             pause_and_clear()
+            sys.stdout.flush()
             add_food_item()
             break
 
@@ -186,6 +188,7 @@ def calorie_tracker_menu():
             print()
             loadingMenu(f"{EIGHT_SPACE} PREPARING TO SEARCH, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
             pause_and_clear()
+            sys.stdout.flush()
             search_food_library()
             break
         
@@ -194,6 +197,7 @@ def calorie_tracker_menu():
             print()
             loadingMenu(f"{EIGHT_SPACE} LOADING ITEMS, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
             pause_and_clear()
+            sys.stdout.flush()
             remove_tracked_item()
             break
         
@@ -568,7 +572,7 @@ def search_food_library():
 
                     search_headers = ["Food Item", "kCal per 100g"]
                     search_item_list.insert(0, search_headers)
-                    search_table = tabulate(search_item_list, tablefmt="rounded_grid", showindex="always", maxcolwidths=[5, 10, 9, 25, 8, 8])
+                    search_table = tabulate(search_item_list, tablefmt="rounded_grid", showindex="always", maxcolwidths=[None, 30, 10])
                     pause_and_clear()
                     print(THREE_SPACE + Fore.BLUE + "AVAILABLE OPTIONS:")
                     print(search_table)
@@ -609,6 +613,7 @@ def remove_tracked_item():
 
         if user_input == "exit":
             pause_and_clear()
+            sys.stdout.flush()
             calorie_tracker_menu()
             break
 
@@ -622,7 +627,7 @@ def remove_tracked_item():
                     print()
                     loadingMenu(f"{EIGHT_SPACE} REMOVING ITEM, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.BLACK, Back.WHITE)
                     print()
-                    load_remove_tracked()
+                    remove_tracked_item()
                     break
 
             for i in view_calorie_tracker:

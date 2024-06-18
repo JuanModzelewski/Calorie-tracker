@@ -2,23 +2,8 @@ import os
 from colorama import Back, Fore
 import sys
 import time
+from constants import DATA_TYPE, SPACING, MENU_HEADING_STYLE
 
-class DATA_TYPE:
-    TWO_MENU_ITEMS = "two_menu_items"
-    THREE_MENU_ITEMS = "three_menu_items"
-    FOUR_MENU_ITEMS = "four_menu_items"
-    FIVE_MENU_ITEMS ="five_menu_items"
-    INTEGER = "integer"
-    ENTRY_NAME = "item_name"
-    SEARCH_CRITERIA = "search_food_library"
-    CALORIE_RANGE = "calorie_data"
-
-MENU_HEADING_STYLE = Fore.WHITE + "----------------"
-THREE_SPACE = " " * 3
-FIVE_SPACE = " " * 5
-EIGHT_SPACE = " " * 8
-TWELVE_SPACE = " " * 12
-SIXTEEN_SPACE = " " * 16
 
 
 def loading_style(text, text_color = Fore.BLACK, background_color = Back.WHITE):
@@ -49,15 +34,12 @@ def menu_headings(title):
     print()
 
 def request(text):
-    print(THREE_SPACE + text)
-    print()
+    print(SPACING.THREE_SPACE + text)
 
 def loading_menu(text):
         print()
-        loading_style(f"{EIGHT_SPACE} {text}, PLEASE WAIT {EIGHT_SPACE}".center(70), Fore.GREEN, Back.BLACK)
+        loading_style(f"{SPACING.EIGHT_SPACE} {text}, PLEASE WAIT {SPACING.EIGHT_SPACE}".center(70), Fore.GREEN, Back.BLACK)
         pause_clear()
-
-
 
 # Menu Input Validation
 def menu_input_validation(value, max_value):
@@ -89,7 +71,7 @@ def validate_data(data, value):
         
         # Update Calorie Data Validation 
         elif data == DATA_TYPE.CALORIE_RANGE:    
-            if not 1500 <= int(value) <= 3500:
+            if not DATA_TYPE.MIN_CALORIES <= int(value) <= DATA_TYPE.MAX_CALORIE:
                 raise ValueError("Select a goal between 1500 and 3500")
         
         elif data == DATA_TYPE.INTEGER:
@@ -99,7 +81,7 @@ def validate_data(data, value):
         # Validates string length for item added to tracker and library    
         elif data == DATA_TYPE.ENTRY_NAME:
             if not value != "" or len(value) > 50 :
-                raise ValueError("Category must be between 0 and 50 characters") 
+                raise ValueError("Item Name must be between 0 and 50 characters") 
 
         # Search criteria must be 3 characters or more
         elif data == DATA_TYPE.SEARCH_CRITERIA:
@@ -108,7 +90,7 @@ def validate_data(data, value):
             
     except ValueError as e:
             print()
-            print(Fore.RED + THREE_SPACE + f"Invalid data: {e}\n")
+            print(Fore.RED + SPACING.THREE_SPACE + f"Invalid data: {e}\n")
             return False
          
     return True

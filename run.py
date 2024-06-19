@@ -550,7 +550,7 @@ def search_main():
 
                 loading_menu("SEARCHING LIBRARY")
                 print(Fore.BLUE + "AVAILABLE OPTIONS:")
-                print(tabulate(search_item_list, HEADERS.SEARCH_HEADERS, tablefmt="rst", maxcolwidths=[5, 35, 10], colalign=("center", "left", "center"), showindex = search_row_id))
+                print(tabulate(search_item_list, HEADERS.SEARCH_HEADERS, tablefmt="rst", maxcolwidths=[5, 40, 10], colalign=("center", "left", "center"), showindex = search_row_id))
                 select_search_item()
 
 # Removes items from Tracker

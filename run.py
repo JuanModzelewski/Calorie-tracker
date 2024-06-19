@@ -568,7 +568,8 @@ def remove_tracked_item():
     print()
     tracker_table("remove_items_menu")
     print()
-    request("Select a number from the Item No. Colum to remove corresponding Food Entry:\n")
+    request("Select a number from the Item No. Colum to remove")
+    request("corresponding Food Entry:\n")
     information("Type 'exit' to return to Calorie Tracker Menu\n")    
 
     while True:

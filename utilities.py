@@ -48,7 +48,7 @@ def information(string):
 # Uses loading style and text string to generate loading animation
 def loading_menu(text):
         print()
-        loading_style(f"{SPACING.EIGHT_SPACE} {text}, PLEASE WAIT {SPACING.EIGHT_SPACE}".center(70), Fore.GREEN, Back.BLACK)
+        loading_style(f"{SPACING.TWELVE_SPACE} {text}, PLEASE WAIT {SPACING.TWELVE_SPACE}".center(70), Fore.GREEN, Back.BLACK)
         pause_clear()
 
 # Menu Input Validation

@@ -3,21 +3,16 @@ from colorama import Back, Fore
 import sys
 import time
 from constants import DATA_TYPE, SPACING, MENU_HEADING_STYLE
+import fontstyle 
 
-
-
+# Creates the loading style
 def loading_style(text, text_color = Fore.BLACK, background_color = Back.WHITE):
     for character in text:
         sys.stdout.write(text_color + background_color + character)
         sys.stdout.flush()
         time.sleep(0.01)
 
-def typing_print(text):
-  for character in text:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.02)
-
+# Brief pause before clearing screen
 def pause_clear():
     """
     Clears screen after a brief pause.
@@ -25,17 +20,32 @@ def pause_clear():
     time.sleep(1.5)
     clear_screen()
 
+# Clear the screen
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     print('\033[2J')
 
+# Menu Headings styling
 def menu_headings(title):
-    print(f"{MENU_HEADING_STYLE}  {title}  {MENU_HEADING_STYLE}".center(70))
+    print(f"{SPACING.EIGHT_SPACE}{MENU_HEADING_STYLE}  {title}  {MENU_HEADING_STYLE}".center(70))
     print()
 
-def request(text):
+# Requesting user input styling
+def request(string):
+    text = fontstyle.apply(string, "BOLD")
     print(SPACING.THREE_SPACE + text)
 
+# Example for request styling
+def example(string):
+    text = fontstyle.apply(string, "ITALIC")
+    print(SPACING.THREE_SPACE + text)
+
+# Styling for any other information displayed
+def information(string):
+    text = fontstyle.apply(string, "FAINT")
+    print(SPACING.THREE_SPACE + text)
+
+# Uses loading style and text string to generate loading animation
 def loading_menu(text):
         print()
         loading_style(f"{SPACING.EIGHT_SPACE} {text}, PLEASE WAIT {SPACING.EIGHT_SPACE}".center(70), Fore.GREEN, Back.BLACK)

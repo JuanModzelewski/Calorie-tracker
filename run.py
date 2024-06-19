@@ -8,7 +8,7 @@ from datetime import datetime
 from colorama import Fore
 from google.oauth2.service_account import Credentials
 from tabulate import tabulate
-from utilities import loading_menu, pause_clear, validate_data, request, menu_headings, clear_screen
+from utilities import loading_menu, validate_data, request, menu_headings, clear_screen, information, example
 from constants import DATA_TYPE, HEADERS, SPACING, MENU_ITEMS, CALORIE_TRACKER_LOGO
 
 
@@ -38,7 +38,6 @@ weight_tracker = SHEET.worksheet("weight_tracker")
 food_library = SHEET.worksheet("food_items")
 
 
-
 def welcome_screen():
     """
     Displays Banner and welcome message
@@ -65,7 +64,8 @@ def welcome_screen():
 def retrieve_values():
     """
     Uses the current date to find values in google sheets
-    Compiles a list from found items, the lists are used in tabulate
+    Compiles a list from found items
+    List are used to tabulate the main Calorie tracker and the remove items table
     """   
     date = datetime.now()
     global current_date
@@ -94,7 +94,6 @@ def retrieve_values():
     for i in tracker_date:
         row_id.append(tracker_date.index(i) + 1)
         
-
 # Creates tables for Calorie Tracker and Remove items selection
 def tracker_table(menu):
     """
@@ -153,7 +152,7 @@ def calorie_tracker_menu():
     print(Fore.GREEN + f"CURRENT CALORIE GOAL: {round(view_calorie_goal, 2)}" + SPACING.EIGHT_SPACE + Fore.YELLOW + f"REMAINING CALORIES: {round(remaining_calories, 2)}\n")
     request("Select one of following options:\n")
 
-
+    # Generates a list of options using the selected menu items
     for idx, menu_item in enumerate(MENU_ITEMS.CALORIE_TRACKER_MENU):
         print(SPACING.FIVE_SPACE + str(idx + 1) + ". " + menu_item)
     print()
@@ -161,7 +160,7 @@ def calorie_tracker_menu():
     # Loop repeats until valid input is received
     while True:
 
-        user_input = input(f"{SPACING.FIVE_SPACE} > ")
+        user_input = input("    > ")
 
         if user_input == "1": 
             loading_menu("LOADING CALORIE GOAL")
@@ -190,23 +189,24 @@ def calorie_tracker_menu():
 def entry_meal(method):
     """
     Validates user input to ensure only available options are entered
-    Add the selected entry to a list, entry directed by method
+    Add the selected a list, the list chosen list is decided by the method
     """
     global new_entry
     new_entry = []
 
     print()
-    request("Please select one of the following options:")
-    request("Type 'exit' to return to Calorie Tracker Menu\n")
+    request("Please select one of the following options:\n")
+    information("Type 'exit' to return to Calorie Tracker Menu\n")
     
-    # Creates options for user to select
+    # Generates a list of options using the selected menu items
+    # ["Breakfast", "Lunch", "Dinner", "Snack"]
     for idx, meal in enumerate(MENU_ITEMS.MEAL_TYPES):
         print(SPACING.FIVE_SPACE + str(idx + 1) + ". " + meal)
     print()
     
     while True:
 
-        user_input = input(f"{SPACING.FIVE_SPACE} > ")
+        user_input = input("    > ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -264,15 +264,15 @@ def add_item(method):
 def entry_serving(method):
     """
     Validates user input to ensure input is a number
-    Adds the serving size to the list
+    Adds the serving size to a list based on method
     """
     print()
     request("Enter your serving size in grams:\n")
-    request("Type 'exit' to return to Calorie Tracker Menu\n")
+    information("Type 'exit' to return to Calorie Tracker Menu\n")
     
     while True:
 
-        user_input = input(f"{SPACING.FIVE_SPACE} Serving Size: ")
+        user_input = input(f"{SPACING.THREE_SPACE} Serving Size: ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -314,27 +314,32 @@ def confirm_manual_item():
     # Serving Calories
     request("Please select one of the following options:\n")
 
-    # Prints menu items
+    # Generates a list of options using the selected menu items
+    # ["Add Item to Tracker", "Save Item to library", "Back to Calorie Tracker"]
     for idx, menu_item in enumerate(MENU_ITEMS.ITEM_CONFIRMATION_SELECTION):
             print(SPACING.FIVE_SPACE + str(idx + 1) + ". " + menu_item)
     print()
 
     while True:
 
-        user_input = input(f"{SPACING.FIVE_SPACE} > ")
+        user_input = input(f"{SPACING.THREE_SPACE} > ")
 
+        # Add item to Tracker
         if user_input == "1":
+            # Calculations are done in the add_item function
             add_item("manual_entry")
             loading_menu("ADDING ITEM TO TRACKER")
             calorie_tracker_menu()
             break
-
+        
+        # Save item to library
         elif user_input == "2":
             food_library.append_row(new_entry[1:3])
             loading_menu("ADDING ITEM TO LIBRARY")
             confirm_manual_item()
             break
-
+        
+        # Back to Calorie Tracker
         elif user_input == "3":
             loading_menu("LOADING CALORIE TRACKER")
             calorie_tracker_menu()
@@ -351,12 +356,12 @@ def calories_manual_item():
     """
     print()
     request("Enter the amount of Calories(kCal) per 100g:")
-    request("**NOTE You can get this information from the nutritional label at the back of the product\n")
-    request("Type 'exit' to return to Calorie Tracker Menu\n")
+    example("**NOTE You can get this information from the nutritional label at the back of the product\n")
+    information("Type 'exit' to return to Calorie Tracker Menu\n")
 
     while True:
 
-        user_input = input(f"{SPACING.FIVE_SPACE} Calories: ")
+        user_input = input(f"{SPACING.THREE_SPACE} Calories: ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -378,13 +383,13 @@ def name_manual_item():
     """
     print()
     request("Please provide a Name for your food item")
-    request("eg Crumb Chicken 'BRAND NAME' (grams per item)\n")
-    request("Type 'exit' to return to Calorie Tracker Menu\n")
+    example("eg Crumb Chicken 'BRAND NAME' (grams per item)\n")
+    information("Type 'exit' to return to Calorie Tracker Menu\n")
 
 
     while True:
 
-        user_input = input(f"{SPACING.FIVE_SPACE} Item Name: ")
+        user_input = input(f"{SPACING.THREE_SPACE} Item Name: ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -398,7 +403,7 @@ def name_manual_item():
             calories_manual_item()
             break
         
-
+# Confirm selected item
 def confirm_search_item():
     """
     Displays the selected item for confirmation
@@ -408,13 +413,13 @@ def confirm_search_item():
     print(Fore.BLUE + "YOUR SELECTION:")
     print(tabulate(selected_item, HEADERS.CONFIRM_SEARCH_ITEM_HEADER,  tablefmt="rst", maxcolwidths=[40, 10], colalign=("left", "center")))
     print()
-    print()
-    request("Please confirm your selection")
-    request("Type 'exit' to return to Calorie Tracker Menu")
-    print()
+    request("Please confirm your selection\n")
+    information("Type 'exit' to return to Calorie Tracker Menu\n")
 
     while True:
 
+        # Generates a list of options using the selected menu items
+        ["Add Item to Tracker", "Back to Search"]
         for idx, menu_item in enumerate(MENU_ITEMS.SEARCH_CONFIRMATION_SELECTION):
             print(SPACING.FIVE_SPACE + str(idx + 1) + ". " + menu_item)
         print()
@@ -423,13 +428,15 @@ def confirm_search_item():
         global selected_flat_list
         selected_flat_list = [element for innerList in selected_item for element in innerList]
 
-        user_input = (f"{SPACING.FIVE_SPACE} > ")
+        user_input = input(f"{SPACING.THREE_SPACE} > ")
 
+        # Add Item to Tracker
         if user_input == "1": 
             clear_screen()
             entry_meal("search_entry")
             break
         
+        # Back to Search
         elif user_input == "2": 
             clear_screen()
             search_main()
@@ -443,6 +450,7 @@ def confirm_search_item():
         else: 
             validate_data(DATA_TYPE.TWO_MENU_ITEMS, user_input)
 
+# Select an item from the search results
 def select_search_item():
     """
     Validates user input to ensure that it is a number
@@ -451,14 +459,14 @@ def select_search_item():
     """
     print()
     request("Select a number from the Item No. Colum to add food entry:\n")
-    request("Type 'exit' to return to Calorie Tracker Menu\n")    
+    information("Type 'exit' to return to Calorie Tracker Menu\n")    
 
     global selected_item
     selected_item = []
 
     while True:
 
-        user_input = input(f"{SPACING.FIVE_SPACE} > ")
+        user_input = input(f"{SPACING.THREE_SPACE} > ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -481,6 +489,7 @@ def select_search_item():
             print()
             print(Fore.RED + SPACING.THREE_SPACE + f"Invalid data: {e}\n")
 
+# Search food_item sheet validate and display results
 def search_main():
     """
     Takes user input, validates input to a minimum of 3 characters
@@ -495,11 +504,11 @@ def search_main():
     print()
     menu_headings("SEARCH FOOD LIBRARY")
     request("Please type the food item you are looking for:\n")
-    request("Type 'exit' to return to Calorie Tracker Menu\n")
+    information("Type 'exit' to return to Calorie Tracker Menu\n")
 
     while True:
             
-        user_input = input(f"{SPACING.FIVE_SPACE} Search for: ")
+        user_input = input(f"{SPACING.THREE_SPACE} Search for: ")
 
         # Allows user to exit search
         if user_input.lower() == "exit":
@@ -522,8 +531,7 @@ def search_main():
                     
             
 
-        # Validates search_items, if item could not be found error message is displayed
-        def validate_food_search():
+            # Validates search_items, if item could not be found error message is displayed
             if len(search_items) == 0:
                 print()
                 print(SPACING.THREE_SPACE + Fore.RED + "There are no items matching your search criteria")
@@ -540,15 +548,10 @@ def search_main():
                 for i in search_item_list:
                     search_row_id.append(search_item_list.index(i)+1)
 
-                pause_clear()
+                loading_menu("SEARCHING LIBRARY")
                 print(Fore.BLUE + "AVAILABLE OPTIONS:")
                 print(tabulate(search_item_list, HEADERS.SEARCH_HEADERS, tablefmt="rst", maxcolwidths=[5, 35, 10], colalign=("center", "left", "center"), showindex = search_row_id))
                 select_search_item()
-            
-        validate_food_search()
-            
-        return False
-
 
 # Removes items from Tracker
 def remove_tracked_item():
@@ -566,11 +569,11 @@ def remove_tracked_item():
     tracker_table("remove_items_menu")
     print()
     request("Select a number from the Item No. Colum to remove corresponding Food Entry:\n")
-    request("Type 'exit' to return to Calorie Tracker Menu\n")    
+    information("Type 'exit' to return to Calorie Tracker Menu\n")    
 
     while True:
         
-        user_input = input(f"{SPACING.FIVE_SPACE} Remove Item No. : ")
+        user_input = input(f"{SPACING.THREE_SPACE} Remove Item No. : ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -590,12 +593,11 @@ def remove_tracked_item():
 
             for i in tracker_date:
                 if int(user_input)  != tracker_date.index(i):
-                    raise ValueError("Select a number from the first colum")
+                    raise ValueError("Select a number from the Item No. colum")
                 
         except ValueError as e:
             print()
             print(Fore.RED + SPACING.THREE_SPACE + f"Invalid data: {e}\n")
-
 
 # Update Calorie Goal / Calories Tracker Menu
 def update_calorie_goal():
@@ -605,8 +607,8 @@ def update_calorie_goal():
     Updated cell on Calorie Goal sheet
     """
     menu_headings("UPDATE CALORIE GOAL")
-    request("Please enter your new calorie goal:")
-    request("Type 'exit' to return to Calorie Tracker\n")
+    request("Please enter your new calorie goal:\n")
+    information("Type 'exit' to return to Calorie Tracker\n")
 
     while True:
 

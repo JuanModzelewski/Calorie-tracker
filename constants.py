@@ -31,11 +31,11 @@ class DATA_TYPE:
     MIN_CALORIES = 1500
 
 class HEADERS:
-    TRACKER_HEADERS = ["\nMeal", "\nFood Item", "Serving\nSize (g)", "\nCalories"]
-    REMOVE_ITEMS_HEADER = ["Item\nNo.","\nMeal", "\nFood Item", "Serving\nSize (g)", "\nCalories"]
-    SEARCH_HEADERS = ["Item No.", "\nFood Item", "kCal\nper 100g"]
-    CONFIRM_SEARCH_ITEM_HEADER = ["\nFood Item", "kCal\nper 100g"]
-    CONFIRM_MANUAL_ITEM_HEADER = ["\nMeal", "\nName", "kCal\nper 100g", "Serving\nSize (g)"]
+    TRACKER_HEADERS = ["\nMeal", "\nFood Item                           ", "Serving\nSize (g)", "\nCalories"]
+    REMOVE_ITEMS_HEADER = ["Item\nNo.","\nMeal", "\nFood Item                      ", "Serving\nSize (g)", "\nCalories"]
+    SEARCH_HEADERS = ["Item\nNo.", "\nFood Item                           ", "kCal\nper 100g"]
+    CONFIRM_SEARCH_ITEM_HEADER = ["\nFood Item                           ", "kCal\nper 100g"]
+    CONFIRM_MANUAL_ITEM_HEADER = ["\nMeal", "\nName                           ", "kCal\nper 100g", "Serving\nSize (g)"]
 
 class MENU_ITEMS:
     ITEM_CONFIRMATION_SELECTION = ["Add Item to Tracker", "Save Item to library", "Back to Calorie Tracker"]

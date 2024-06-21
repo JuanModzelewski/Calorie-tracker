@@ -38,7 +38,6 @@ SHEET = GSPREAD_CLIENT.open("calorie_tracker")
 # GSPREAD SHEETS
 calorie_tracker = SHEET.worksheet("calorie_tracker")
 calorie_goal = SHEET.worksheet("calorie_goal")
-weight_tracker = SHEET.worksheet("weight_tracker")
 food_library = SHEET.worksheet("food_items")
 
 
@@ -151,7 +150,7 @@ def calorie_tracker_menu():
 
     # Gets the Calorie Goal value from the calorie_goal sheet
     view_calorie_goal = calorie_goal.cell(
-        2, 2, value_render_option='FORMULA').value
+        2, 1, value_render_option='FORMULA').value
 
     # Loops through lis and gets all calorie indexes
     for i in tracker_entries:
@@ -171,14 +170,14 @@ def calorie_tracker_menu():
     tracker_table("tracker_menu")
     print()
     print(Fore.GREEN + f"CURRENT CALORIE GOAL: {round(view_calorie_goal, 2)}" +
-          SPACING.EIGHT_SPACE + Fore.YELLOW +
+          SPACING["EIGHT_SPACE"] + Fore.YELLOW +
           f"REMAINING CALORIES: {round(remaining_calories, 2)}\n")
 
     request("Select one of following options:\n")
 
     # Generates a list of options using the selected menu items
     for idx, menu_item in enumerate(MENU_ITEMS.CALORIE_TRACKER_MENU):
-        print(SPACING.FIVE_SPACE + str(idx + 1) + ". " + menu_item)
+        print(SPACING["FIVE_SPACE"] + str(idx + 1) + ". " + menu_item)
     print()
 
     # Loop repeats until valid input is received
@@ -226,7 +225,7 @@ def entry_meal(method):
     # Generates a list of options using the selected menu items
     # ["Breakfast", "Lunch", "Dinner", "Snack"]
     for idx, meal in enumerate(MENU_ITEMS.MEAL_TYPES):
-        print(SPACING.FIVE_SPACE + str(idx + 1) + ". " + meal)
+        print(SPACING["FIVE_SPACE"] + str(idx + 1) + ". " + meal)
     print()
 
     while True:
@@ -306,7 +305,7 @@ def entry_serving(method):
 
     while True:
 
-        user_input = input(f"{SPACING.THREE_SPACE} Serving Size: ")
+        user_input = input(f"{SPACING["THREE_SPACE"]} Serving Size: ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -361,12 +360,12 @@ def confirm_manual_item():
     # "Save Item to library",
     # "Back to Calorie Tracker"]
     for idx, menu_item in enumerate(MENU_ITEMS.ITEM_CONFIRMATION_SELECTION):
-        print(SPACING.FIVE_SPACE + str(idx + 1) + ". " + menu_item)
+        print(SPACING["FIVE_SPACE"] + str(idx + 1) + ". " + menu_item)
     print()
 
     while True:
 
-        user_input = input(f"{SPACING.THREE_SPACE} > ")
+        user_input = input(f"{SPACING["THREE_SPACE"]} > ")
 
         # Add item to Tracker
         if user_input == "1":
@@ -407,7 +406,7 @@ def calories_manual_item():
 
     while True:
 
-        user_input = input(f"{SPACING.THREE_SPACE} Calories: ")
+        user_input = input(f"{SPACING["THREE_SPACE"]} Calories: ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -436,7 +435,7 @@ def name_manual_item():
 
     while True:
 
-        user_input = input(f"{SPACING.THREE_SPACE} Item Name: ")
+        user_input = input(f"{SPACING["THREE_SPACE"]} Item Name: ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -474,7 +473,7 @@ def confirm_search_item():
         # ["Add Item to Tracker", "Back to Search"]
         for idx, menu_item in enumerate(
                 MENU_ITEMS.SEARCH_CONFIRMATION_SELECTION):
-            print(SPACING.FIVE_SPACE + str(idx + 1) + ". " + menu_item)
+            print(SPACING["FIVE_SPACE"] + str(idx + 1) + ". " + menu_item)
         print()
 
         # flat list is created for next steps so items can be added
@@ -483,7 +482,7 @@ def confirm_search_item():
         selected_flat_list = [
             element for innerList in selected_item for element in innerList]
 
-        user_input = input(f"{SPACING.THREE_SPACE} > ")
+        user_input = input(f"{SPACING["THREE_SPACE"]} > ")
 
         # Add Item to Tracker
         if user_input == "1":
@@ -522,7 +521,7 @@ def select_search_item():
 
     while True:
 
-        user_input = input(f"{SPACING.THREE_SPACE} > ")
+        user_input = input(f"{SPACING["THREE_SPACE"]} > ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -544,7 +543,7 @@ def select_search_item():
 
         except ValueError as e:
             print()
-            print(Fore.RED + SPACING.THREE_SPACE + f"Invalid data: {e}\n")
+            print(Fore.RED + SPACING["THREE_SPACE"] + f"Invalid data: {e}\n")
 
 
 # Search food_item sheet validate and display results
@@ -566,7 +565,7 @@ def search_main():
 
     while True:
 
-        user_input = input(f"{SPACING.THREE_SPACE} Search for: ")
+        user_input = input(f"{SPACING["THREE_SPACE"]} Search for: ")
 
         # Allows user to exit search
         if user_input.lower() == "exit":
@@ -592,7 +591,7 @@ def search_main():
             if len(search_items) == 0:
                 print()
                 clear_screen()
-                print(SPACING.THREE_SPACE + Fore.RED +
+                print(SPACING["THREE_SPACE"] + Fore.RED +
                       "There are no items matching your search criteria")
                 print()
                 search_main()
@@ -639,7 +638,7 @@ def remove_tracked_item():
 
     while True:
 
-        user_input = input(f"{SPACING.THREE_SPACE} Remove Item No. : ")
+        user_input = input(f"{SPACING["THREE_SPACE"]} Remove Item No. : ")
 
         if user_input.lower() == "exit":
             loading_menu("LOADING CALORIE TRACKER")
@@ -664,7 +663,7 @@ def remove_tracked_item():
 
         except ValueError as e:
             print()
-            print(Fore.RED + SPACING.THREE_SPACE + f"Invalid data: {e}\n")
+            print(Fore.RED + SPACING["THREE_SPACE"] + f"Invalid data: {e}\n")
 
 
 # Update Calorie Goal / Calories Tracker Menu
@@ -690,7 +689,7 @@ def update_calorie_goal():
             break
 
         if validate_data(DATA_TYPE.CALORIE_RANGE, user_input):
-            calorie_goal.update_cell(2, 2, user_input)
+            calorie_goal.update_cell(2, 1, user_input)
             loading_menu("UPDATING CALORIE GOAL")
             calorie_tracker_menu()
 

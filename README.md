@@ -308,12 +308,7 @@ Deployment to Heroku was completed using the following steps:
 ## Credits
 
 ### Content
-
+- Google sheets food library provided by  [G Fitness Online](https://gfitnessonline.com/calorie-tracker-spreadsheet/) all content modified and adapted for personal use.
 - Code
 
 
-### Media
-
-
-
-https://gfitnessonline.com/calorie-tracker-spreadsheet/

@@ -33,27 +33,27 @@ def clear_screen():
 
 # Menu Headings styling
 def menu_headings(title):
-    print(f"{SPACING.EIGHT_SPACE}{MENU_HEADING_STYLE}  {title}  {MENU_HEADING_STYLE}".center(70))
+    print(f"{SPACING["EIGHT_SPACE"]}{MENU_HEADING_STYLE}  {title}  {MENU_HEADING_STYLE}".center(70))
     print()
 
 # Requesting user input styling
 def request(string):
     text = fontstyle.apply(string, "BOLD")
-    print(SPACING.THREE_SPACE + text)
+    print(SPACING["THREE_SPACE"] + text)
 
 # Example for request styling
 def example(string):
     text = fontstyle.apply(string, "ITALIC")
-    print(SPACING.THREE_SPACE + text)
+    print(SPACING["THREE_SPACE"] + text)
 
 # Styling for any other information displayed
 def information(text):
-    print(SPACING.THREE_SPACE + Style.DIM +  text)
+    print(SPACING["THREE_SPACE"] + Style.DIM +  text)
 
 # Uses loading style and text string to generate loading animation
 def loading_menu(text):
         print()
-        loading_style(f"{SPACING.TWELVE_SPACE} {text}, PLEASE WAIT {SPACING.TWELVE_SPACE}".center(70), Fore.GREEN, Back.BLACK)
+        loading_style(f"{SPACING["TWELVE_SPACE"]} {text}, PLEASE WAIT {SPACING["TWELVE_SPACE"]}".center(70), Fore.GREEN, Back.BLACK)
         pause_clear()
 
 # Menu Input Validation
@@ -105,7 +105,7 @@ def validate_data(data, value):
             
     except ValueError as e:
             print()
-            print(Fore.RED + SPACING.THREE_SPACE + f"Invalid data: {e}\n")
+            print(Fore.RED + SPACING["THREE_SPACE"] + f"Invalid data: {e}\n")
             return False
          
     return True

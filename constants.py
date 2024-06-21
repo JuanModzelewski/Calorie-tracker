@@ -18,6 +18,15 @@ CALORIE_TRACKER_LOGO = print(Fore.BLUE + r'''
          ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝                                                                               
     ''')
 
+
+SPACING = {
+    "THREE_SPACE" : " " * 3,
+    "FIVE_SPACE" : " " * 5,
+    "EIGHT_SPACE" : " " * 8,
+    "TWELVE_SPACE" : " " * 12,
+    "SIXTEEN_SPACE" : " " * 16,
+}
+
 class DATA_TYPE:
     TWO_MENU_ITEMS = "two_menu_items"
     THREE_MENU_ITEMS = "three_menu_items"
@@ -31,11 +40,11 @@ class DATA_TYPE:
     MIN_CALORIES = 1500
 
 class HEADERS:
-    TRACKER_HEADERS = ["\nMeal", "\nFood Item                           ", "Serving\nSize (g)", "\nCalories"]
-    REMOVE_ITEMS_HEADER = ["Item\nNo.","\nMeal", "\nFood Item                      ", "Serving\nSize (g)", "\nCalories"]
-    SEARCH_HEADERS = ["Item\nNo.", "\nFood Item                           ", "kCal\nper 100g"]
-    CONFIRM_SEARCH_ITEM_HEADER = ["\nFood Item                           ", "kCal\nper 100g"]
-    CONFIRM_MANUAL_ITEM_HEADER = ["\nMeal", "\nName                           ", "kCal\nper 100g", "Serving\nSize (g)"]
+    TRACKER_HEADERS = ["\nMeal", "\nFood Item " + SPACING["SIXTEEN_SPACE"], "Serving\nSize (g)", "\nCalories"]
+    REMOVE_ITEMS_HEADER = ["Item\nNo.","\nMeal", "\nFood Item" + SPACING["SIXTEEN_SPACE"], "Serving\nSize (g)", "\nCalories"]
+    SEARCH_HEADERS = ["Item\nNo.", "\nFood Item" + SPACING["SIXTEEN_SPACE"], "kCal\nper 100g"]
+    CONFIRM_SEARCH_ITEM_HEADER = ["\nFood Item" + SPACING["SIXTEEN_SPACE"], "kCal\nper 100g"]
+    CONFIRM_MANUAL_ITEM_HEADER = ["\nMeal", "\nName" + SPACING["SIXTEEN_SPACE"], "kCal\nper 100g", "Serving\nSize (g)"]
 
 class MENU_ITEMS:
     ITEM_CONFIRMATION_SELECTION = ["Add Item to Tracker", "Save Item to library", "Back to Calorie Tracker"]
@@ -43,9 +52,3 @@ class MENU_ITEMS:
     MEAL_TYPES =  ["Breakfast", "Lunch", "Dinner", "Snack"]
     CALORIE_TRACKER_MENU = ["Update Calorie Goal", "Manually Add Food Item", "Search & Add From Library", "Remove Item From Tracker"]
 
-class SPACING:
-    THREE_SPACE = " " * 3
-    FIVE_SPACE = " " * 5
-    EIGHT_SPACE = " " * 8
-    TWELVE_SPACE = " " * 12
-    SIXTEEN_SPACE = " " * 16

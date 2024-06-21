@@ -176,6 +176,9 @@ def calorie_tracker_menu():
     request("Select one of following options:\n")
 
     # Generates a list of options using the selected menu items
+    # ["Update Calorie Goal", "Manually Add Food Item",
+    # "Search & Add From Library", "Remove Item From Tracker"]
+    # Assistance from mentor to simplify and reduce code length
     for idx, menu_item in enumerate(MENU_ITEMS.CALORIE_TRACKER_MENU):
         print(SPACING["FIVE_SPACE"] + str(idx + 1) + ". " + menu_item)
     print()
@@ -224,6 +227,7 @@ def entry_meal(method):
 
     # Generates a list of options using the selected menu items
     # ["Breakfast", "Lunch", "Dinner", "Snack"]
+    # Assistance from mentor to simplify and reduce code length
     for idx, meal in enumerate(MENU_ITEMS.MEAL_TYPES):
         print(SPACING["FIVE_SPACE"] + str(idx + 1) + ". " + meal)
     print()
@@ -359,6 +363,7 @@ def confirm_manual_item():
     # ["Add Item to Tracker",
     # "Save Item to library",
     # "Back to Calorie Tracker"]
+    # Assistance from mentor to simplify and reduce code length
     for idx, menu_item in enumerate(MENU_ITEMS.ITEM_CONFIRMATION_SELECTION):
         print(SPACING["FIVE_SPACE"] + str(idx + 1) + ". " + menu_item)
     print()
@@ -471,6 +476,7 @@ def confirm_search_item():
 
         # Generates a list of options using the selected menu items
         # ["Add Item to Tracker", "Back to Search"]
+        # Assistance from mentor to simplify and reduce code length
         for idx, menu_item in enumerate(
                 MENU_ITEMS.SEARCH_CONFIRMATION_SELECTION):
             print(SPACING["FIVE_SPACE"] + str(idx + 1) + ". " + menu_item)

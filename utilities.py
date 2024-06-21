@@ -11,6 +11,7 @@ from constants import DATA_TYPE, SPACING, MENU_HEADING_STYLE
 # https://www.geeksforgeeks.org/fontstyle-module-in-python/
 import fontstyle 
 
+# Code adapted from: https://www.101computing.net/python-typing-text-effect/
 # Creates the loading style
 def loading_style(text, text_color = Fore.BLACK, background_color = Back.WHITE):
     for character in text:

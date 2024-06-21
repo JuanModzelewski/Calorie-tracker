@@ -2,7 +2,9 @@
 
 Calorie Tacker was developed to make it simple and effective for users to manage their daily caloric intake. Calorie tracker is able to modify the calorie goal, add and remove entries, and search through a food library kept on Google Sheets. Based on the total calories of entries and the predetermined calorie goal, the remaining daily calories are calculated and displayed.
 
+View the deployed application [here](https://calorie-tracker-0245c5ccb0dc.herokuapp.com/)
 
+View Calorie Tracker Google Sheet [here](https://docs.google.com/spreadsheets/d/1_Hv-sAFErzFWCQm2d_S9ajNXGd175nY2NhQD3Yvg3I0/edit?gid=344512474#gid=344512474)
 
 ![Calorie Tracker Welcome Screen](/assets/readme-images/welcome-screen.jpg)
 
@@ -68,6 +70,8 @@ Adding data into a table format using [Tabulate](https://pypi.org/project/tabula
 
 ### Colors
 In order to create contrast and organize the information hierarchy, [Colorama](https://pypi.org/project/colorama/) was utilized to bring color to the terminal text. 
+<br>
+
 ![Colorama Color Pallet](/assets/readme-images/colorama-pallet.jpg)
 - Error messages are colored red to make error identification easier.
 - Blue was used for the logo and primary elements.
@@ -315,7 +319,13 @@ Deployment to Heroku was completed using the following steps:
 ## Credits
 
 ### Content
-- Google sheets food library provided by  [G Fitness Online](https://gfitnessonline.com/calorie-tracker-spreadsheet/) all content modified and adapted for personal use.
-- Code
+- Google sheets food library provided by [G Fitness Online](https://gfitnessonline.com/calorie-tracker-spreadsheet/) all content modified and adapted for personal use.
+- TypingPrint used for loading bar was adapted and used from [101 Computing](https://www.101computing.net/python-typing-text-effect/)
+- [GeeksforGeeks](https://www.geeksforgeeks.org/) and [W3S](https://www.w3schools.com/) were used regularly for guidance and tips.
+- Setup and deploying to [Heroku](https://www.heroku.com) instructions provided by [Code Institutes](https://codeinstitute.net/se/) Love Sandwiches project.
+- Setting up API and connecting to Google Sheets instructions provided by [Code Institutes](https://codeinstitute.net/se/) Love Sandwiches project.
+
+### Acknowledgements
+- May Thanks to Akshad Garg my mentor for continuously directing and advising me.
 
 

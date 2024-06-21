@@ -147,9 +147,9 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 
 ### Languages
 
-- [Python3](https://en.wikipedia.org/wiki/Python_(programming_language))
+- [Python3](https://www.python.org/downloads/)
 
-    - Provided as part of Code Institute's [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template): 
+- Template provided by Code Institute [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template): 
 
 ### Frameworks, Libraries, and Packages
 
@@ -281,26 +281,27 @@ The application was created in Visual Studio, using the CI love sandwiches templ
 ### Heroku
 Deployment to Heroku was completed using the following steps:
 
-1. Update your requirements.txt file
-    - Run pip3 freeze > requirements.txt' in the terminal to add a list of dependencies to requirements.txt.
+1. Update your requirements.txt file by entering entering the below into the terminal:
+    - Run pip3 freeze > requirements.txt'.
     - Commit and push the changes to Github.
-2. Log in to Heroku and from the dashboard, click Create New App.
-    - Enter an app name and choose your region. Click Create App.
-3. Go to Settings and update the ConfigVars.
+2. Log in to Heroku and select New / Create new app.
+    - Create an app name and select your region. 
+    - Click Create App to continue.
+3. Navigate to the Settings tab locate the ConfigVars section.
     - Click Reveal ConfigVars and add the following information:
-        - KEY = 'CREDS', VALUE = Copy and paste the entire contents of the creds.json file into this field.
-        - KEY = 'PORT', VALUE = '8000'.
+     - KEY = 'CREDS', VALUE = Copy and paste the entire contents of the creds.json file into this field.
+    - KEY = 'PORT', VALUE = '8000'.
     - Click Add after entering each ConfigVar.
-4. Within Settings, update the Buildpacks.
+4. Within Settings, locate Buildpacks section.
     - Click Add Buildpack and add the following buildpacks:
-        - Add Python and click Add Buildpack.
-        - Add NodeJS and click Add Buildpack.
-        - Make sure the Python buildpack is above the NodeJS buildpack.
-5. Go to Deploy and specify deployment details.
+    - Add Python and click Add Buildpack.
+    - Add NodeJS and click Add Buildpack.
+    - Make sure the Python buildpack is above the NodeJS buildpack.
+5. Go to Deploy tab and complete the deployment details.
     - Select GitHub as the Deployment Method.
-        - When prompted to Connect to GitHub, find your repository and click Connect.
-    - Select either Automatic Deploys or Manual Deploys and click Deploy Branch.
-6. Once deployment has been completed, click View to view the deployed project.
+    - Connect to GitHub and locate your repository and select Connect.
+    - Select either to Automatic Deploy or Manual Deploy your and click Deploy Branch.
+6. Once deployed, select open app to view the deployed project.
 
 - The live link is [Calorie Tracker](https://calorie-tracker-0245c5ccb0dc.herokuapp.com/)
 

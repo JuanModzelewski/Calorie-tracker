@@ -260,7 +260,7 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 ### CI Python Linter
 
 Passed with no errors found
-[CI Python Linter Results](/assets/readme-images/ci-python-linter-results.jpg)
+![CI Python Linter Results](/assets/readme-images/ci-python-linter-results.jpg)
 
 ### Bugs
 No bugs to report

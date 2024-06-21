@@ -36,21 +36,21 @@ To help people reach their objectives more easily, the users' primary objective 
 4. Manually Add Food Items
     - Enables the user to build a custom entry in Tracker and store it in a library for convenient access to entries in the future.
     - The following steps must be followed in order to create a new entry:
-        1. Decide on the meal schedule (breakfast, lunch, dinner, snack).
-        2. Give the item a name and some background information.
-        3. Type in the item's calories per 100g.
-        4. The user will enter the item's needed serving size.
+        * 1. Decide on the meal schedule (breakfast, lunch, dinner, snack).
+        * 2. Give the item a name and some background information.
+        * 3. Type in the item's calories per 100g.
+        * 4. The user will enter the item's needed serving size.
     - After the entry is previewed, you can choose to add it to the tracker, save it to the food library, or exit to main tracker.
 
 5. Search & Add From Library
     - Allows the user to search for existing food items in the Google sheet and add food items to the tracker.
     - The following steps must be followed in order to search and add an entry:
-        1. Type the item's name into the search field.
-        2. If the item is found, the user has to choose it from a list by referring to the item number column.
-        3. The chosen item will be shown for verification, with options to add it to the tracker or go back to the search.
-        4. The user will choose their meal schedule (breakfast, lunch, supper, and snack) if they choose to add an item.
-        5. The user will enter the item's needed serving size.
-        6. The entry will be added to the tracker and the user will return to the Calorie Tracker
+        * 1. Type the item's name into the search field.
+        * 2. If the item is found, the user has to choose it from a list by referring to the item number column.
+        * 3. The chosen item will be shown for verification, with options to add it to the tracker or go back to the search.
+        * 4. The user will choose their meal schedule (breakfast, lunch, supper, and snack) if they choose to add an item.
+        * 5. The user will enter the item's needed serving size.
+        * 6. The entry will be added to the tracker and the user will return to the Calorie Tracker
 
 ### Design
 Since this is a terminal application, the interface contrast was created solely by simple text alteration and styling. Moreover, table formatting to show information in a structured table.
@@ -87,32 +87,59 @@ In order to provide information hierarchy in text [Fontstyle](https://pypi.org/p
 | 1. Calorie Tracker without entries| ![No Entries](/assets/readme-images/calorie-tracker-main-no-entries.jpg) |
 | 2. Calorie Tracker with entries | ![With Entries](/assets/readme-images/calorie-tracker-main-with-new%20entry.jpg) |
 
-- 
+- Shows entries if any are found for the current day; if not, placeholder text will take the place of the table.
+- Displays Current Calorie Goal and Remaining Calories below the table.
+- Offers menu options that the user can select from based on the require outcome
+ - Update Calorie Goal
+ - Manually Add Food Item
+ - Search & Add From Library
+ - Remove Items From Tracker
 
 ### Update Calorie Goal
 
 ![Update Calorie Goal](/assets/readme-images/change-calorie-goal.jpg)
 
-- The description and accompanying image depict a keyboard with color-coded fingers, and the keyboard keys indicate which fingers are best utilized to type each character.
+- Allows the user to modify the calorie target in accordance with their dietary needs and desired goals
 
 
 ### Manually Add Food Item
 
-- Allows user to add a new entry to the Calorie Tracker the steps and screen are listed below:
+- Allows for the addition of a new entry to the Calorie Tracker. The following screen and processes are described:
 
 | Step | Image |
 | :---         |          ---: |
 | 1. Select the Meal Schedule | ![Entry Meal](/assets/readme-images/meal-selection.jpg) |
 | 2. Provide a Name for Food Item | ![Item Name](/assets/readme-images/item-name.jpg) |
 | 3. Enter the amount of Calories (kCal) per 100g | ![Item Calories](/assets/readme-images/item-calories-info.jpg) |
-| 4. Enter the needed serving size of Item | ![Item Name](/assets/readme-images/item-serving-size.jpg) |
-| 5. Confirm Entry and Chose to Add to Tracker or Save to Library 
+| 4. Enter the desired serving size of Item | ![Item Name](/assets/readme-images/item-serving-size.jpg) |
+| 5. Confirm Entry and Chose to Add to Tracker or Save to Library | ![Item Confirmation](/assets/readme-images/item-confirmation-manual-add.jpg) |
+
 - Add Item to Tracker (Adds Entry to Tracker and returns User to Calorie Tracker)
 - Save Item to Library (Save the entry to the Food Library)
 - Exit to Calorie Tracker (Returns the user to Calorie Tracker)
-| ![Item Confirmation](/assets/readme-images/item-confirmation-manual-add.jpg) |
 
+### Search & Add From Library
 
+- Items found in the library can be searched through and added to the calorie tracker. The following screen and processes are described:
+
+| Step | Image |
+| :---         |          ---: |
+| 1. Enter the item you want to look for | ![Search Food Library](/assets/readme-images/search-food-library.jpg) |
+| 2. Select an Item from the search results | ![Search Results](/assets/readme-images/search-result-selection.jpg) |
+| 3. Confirm the selected item | ![Search Confirmation](/assets/readme-images/search-item-confirmation.jpg) |
+| 4. Select the Meal Schedule | ![Entry Meal](/assets/readme-images/meal-selection.jpg) |
+| 5. Enter the desired serving size of Item | ![Item Name](/assets/readme-images/item-serving-size.jpg) |
+
+- Entry is then added to the Tracker and user is returned to the Calorie Tracker
+
+### Remove Item From Tracker
+
+- Remove any currently tracked items from the Calorie Tracker
+
+![Remove Tracked Items](/assets/readme-images/remove-entries.jpg)
+
+- Select the Item No. in the first colum corresponding to the entry that is to be removed.
+- The user can return to the Calorie Tracker by typing "exit"
 
 ## Technologies Used
 
@@ -121,8 +148,6 @@ In order to provide information hierarchy in text [Fontstyle](https://pypi.org/p
 - [Python3](https://en.wikipedia.org/wiki/Python_(programming_language))
 
 Provided as part of Code Institute's [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template): 
-- [HTML5](https://en.wikipedia.org/wiki/HTML5)
-- [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 
 ### Frameworks, Libraries, and Packages
 
@@ -166,11 +191,46 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 ## Testing
 
 
-### Manual Testing
+### Manual Testing Features
 
-| Action | Expected Behavior | Result |
+#### Welcome Screen
+| Feature | Expected Outcome | Result |
 | :---         |     :---:      |          ---: |
+| Page Load | Welcome screen loads displaying welcome message and information on application use | Pass |
+| Input Enter to continue | When Enter is pressed the application loads the calorie tracker  | Pass |
+| Loading Animation | The Loading bar is displayed with the correct loading text  | Pass |
 
+#### Calorie Tracker
+| Feature | Expected Outcome | Result |
+| :---         |     :---:      |          ---: |
+| Page Load | The Calorie Tracker loads with heading, current date, tracker table if present, calorie goal with remaining calories and menu options | Pass |
+| Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
+| Correct Date Inserted | The Table Date is displayed with the correct date information  | Pass |
+| Calorie Table | Table entries are correctly displayed in the Tracker table, place holder text is present if there are no tracked entries | Pass |
+| Calorie Goal | The correct Calorie Goal is displayed below the table | Pass |
+| Remaining Calories | Remaining Calories are correctly calculated and displayed below the table | Pass |
+| Menu Selection | Menu Items are present and in the correct order | Pass |
+| Loading Animation | The Loading bar is displayed with the correct loading text based on menu option selected  | Pass |
+
+
+#### Update Calorie Goal
+| Feature | Expected Outcome | Result |
+| :---         |     :---:      |          ---: |
+| Page Load | Calorie Goal page loads and request is displayed | Pass |
+| Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
+| Update Calorie Goal | If the correct input is entered the new Calorie Goal is added to the tracker | Pass |
+| Loading Animation | The Loading bar is displayed with the correct loading text | Pass |
+| Calorie Tracker Loaded | The Calorie Tracker is loaded and the new calorie goal is displayed | Pass |
+
+
+#### Manually Add Food Item
+| Feature | Expected Outcome | Result |
+| :---         |     :---:      |          ---: |
+|  |  | Pass |
+|  |  | Pass |
+|  |  | Pass |
+|  |  | Pass |
+|  |  | Pass |
 
 ### Validator Testing 
 
@@ -214,7 +274,7 @@ Deployment to Heroku was completed using the following steps:
     - Select either Automatic Deploys or Manual Deploys and click Deploy Branch.
 6. Once deployment has been completed, click View to view the deployed project.
 
-- The live link is [KeyBoard Hero](https://juanmodzelewski.github.io/Keyboard-Hero/)
+- The live link is [KeyBoard Hero](https://calorie-tracker-0245c5ccb0dc.herokuapp.com/)
 
 ## Credits
 

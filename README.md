@@ -217,7 +217,7 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 
 #### Update Calorie Goal
 | Feature | Expected Outcome | Result | Image |
-| :--- | :--- | :---: | :---: |
+| :---         |     :---      |          :---: |         :---: |
 | Page Loads | Calorie Goal page loads and request is displayed to enter new Calorie Goal | Pass | ![Calorie Goal Page](/assets/readme-images/change-calorie-goal.jpg) |
 | Menu Heading | Menu Heading is clearly displayed with the correct title | Pass | ![Calorie Goal Heading](/assets/readme-images/change-calorie-heading.jpg) |
 | Update Calorie Goal | If the correct input is entered the new Calorie Goal is added to the tracker | Pass |

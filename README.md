@@ -107,12 +107,12 @@ In order to provide information hierarchy in text [Fontstyle](https://pypi.org/p
 - Allows for the addition of a new entry to the Calorie Tracker. The following screen and processes are described:
 
 | Step | Image |
-| :---         |          ---: |
+| :---         |          :--- |
 | 1. Select the Meal Schedule | ![Entry Meal](/assets/readme-images/meal-selection.jpg) |
 | 2. Provide a Name for Food Item | ![Item Name](/assets/readme-images/item-name.jpg) |
 | 3. Enter the amount of Calories (kCal) per 100g | ![Item Calories](/assets/readme-images/item-calories-info.jpg) |
 | 4. Enter the desired serving size of Item | ![Item Name](/assets/readme-images/item-serving-size.jpg) |
-| 5. Confirm Entry and Chose to Add to Tracker or Save to Library | ![Item Confirmation](/assets/readme-images/item-confirmation-manual-add.jpg) |
+| 5. Confirm Entry and Choose to Add to Tracker or Save to Library | ![Item Confirmation](/assets/readme-images/item-confirmation-manual-add.jpg) |
 
 - Add Item to Tracker (Adds Entry to Tracker and returns User to Calorie Tracker)
 - Save Item to Library (Save the entry to the Food Library)
@@ -123,7 +123,7 @@ In order to provide information hierarchy in text [Fontstyle](https://pypi.org/p
 - Items found in the library can be searched through and added to the calorie tracker. The following screen and processes are described:
 
 | Step | Image |
-| :---         |          ---: |
+| :---         |          :--- |
 | 1. Enter the item you want to look for | ![Search Food Library](/assets/readme-images/search-food-library.jpg) |
 | 2. Select an Item from the search results | ![Search Results](/assets/readme-images/search-result-selection.jpg) |
 | 3. Confirm the selected item | ![Search Confirmation](/assets/readme-images/search-item-confirmation.jpg) |
@@ -195,14 +195,14 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 
 #### Welcome Screen
 | Feature | Expected Outcome | Result |
-| :---         |     :---:      |          ---: |
+| :---         |     :---      |          :---: |
 | Page Load | Welcome screen loads displaying welcome message and information on application use | Pass |
 | Input Enter to continue | When Enter is pressed the application loads the calorie tracker  | Pass |
 | Loading Animation | The Loading bar is displayed with the correct loading text  | Pass |
 
 #### Calorie Tracker
 | Feature | Expected Outcome | Result |
-| :---         |     :---:      |          ---: |
+| :---         |     :---      |          :---: |
 | Page Load | The Calorie Tracker loads with heading, current date, tracker table if present, calorie goal with remaining calories and menu options | Pass |
 | Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
 | Correct Date Inserted | The Table Date is displayed with the correct date information  | Pass |
@@ -215,7 +215,7 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 
 #### Update Calorie Goal
 | Feature | Expected Outcome | Result |
-| :---         |     :---:      |          ---: |
+| :---         |     :---      |          :---: |
 | Page Load | Calorie Goal page loads and request is displayed | Pass |
 | Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
 | Update Calorie Goal | If the correct input is entered the new Calorie Goal is added to the tracker | Pass |
@@ -225,12 +225,14 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 
 #### Manually Add Food Item
 | Feature | Expected Outcome | Result |
-| :---         |     :---:      |          ---: |
-|  |  | Pass |
-|  |  | Pass |
-|  |  | Pass |
-|  |  | Pass |
-|  |  | Pass |
+| :---         |     :---     |          :---: |
+| Item Meal Selection | Page loads displaying the correct meal options to be selected | Pass |
+| Item Name | Page loads and request to enter Item Name is given with an example of the format to be used | Pass |
+| Enter the amount of Calories (kCal) per 100g | Page loads with request and information on where to find the items calories per 100g | Pass |
+| Enter the desired serving size of Item | Page loads with request to enter the desired serving size for the item | Pass |
+| Entry confirmation | Page loads displaying a preview of the created entry and providing options to proceed | Pass |
+| Save Item to Library | Item is added to the library and confirmation screen displayed again | Pass |
+| Add Item to Tracker | Entry is added to the tracker and the Calorie Tracker is displayed | Pass |
 
 ### Validator Testing 
 

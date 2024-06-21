@@ -642,6 +642,9 @@ def remove_tracked_item():
     request("corresponding Food Entry:\n")
     information("Type 'exit' to return to Calorie Tracker Menu\n")
 
+    current_entries = (len(calorie_tracker.get_all_values()) -
+                                   len(tracker_entries))
+
     while True:
 
         user_input = input(f"{SPACING["THREE_SPACE"]} Remove Item No. : ")
@@ -652,19 +655,17 @@ def remove_tracked_item():
             break
 
         try:
-            for i in tracker_date:
-                current_entries = (len(calorie_tracker.get_all_values()) -
-                                   len(tracker_date))
+            for i in tracker_entries:
                 remove_row = int(user_input) + int(current_entries)
 
-                if int(user_input) - 1 == tracker_date.index(i):
+                if int(user_input) - 1 == tracker_entries.index(i):
                     calorie_tracker.delete_rows(remove_row)
                     loading_menu("REMOVING ITEM")
                     remove_tracked_item()
                     break
 
-            for i in tracker_date:
-                if int(user_input) != tracker_date.index(i):
+            for i in tracker_entries:
+                if int(user_input) != tracker_entries.index(i):
                     raise ValueError("Select a number from the Item No. colum")
 
         except ValueError as e:

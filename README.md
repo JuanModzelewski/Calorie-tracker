@@ -52,6 +52,13 @@ To help people reach their objectives more easily, the users' primary objective 
         4. The user will choose their meal schedule (breakfast, lunch, supper, and snack) if they choose to add an item.
         5. The user will enter the item's needed serving size.
         6. The entry will be added to the tracker and the user will return to the Calorie Tracker
+
+6.  Remove Food Item From Tracker
+    - Allows user to remove any currently tracked items, the removed items will be taken off Google Sheets.
+    - The Following steps are taken to remove an item from the tracker:
+        1. Select a number from the Item No. Colum corresponding to the entry that is to be removed.
+        2. The loading animation will appear and the Remove Food Item page reloaded with the selected item no longer being tracked.
+
 <br>
 <br>
 
@@ -61,6 +68,7 @@ Adding data into a table format using [Tabulate](https://pypi.org/project/tabula
 
 ### Colors
 In order to create contrast and organize the information hierarchy, [Colorama](https://pypi.org/project/colorama/) was utilized to bring color to the terminal text. 
+![Colorama Color Pallet](/assets/readme-images/colorama-pallet.jpg)
 - Error messages are colored red to make error identification easier.
 - Blue was used for the logo and primary elements.
 - Green was used for confirmation elements and Current Calorie Goal text.
@@ -144,7 +152,6 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 <br>
 
 ## Technologies Used
-
 ### Languages
 
 - [Python3](https://www.python.org/downloads/)
@@ -174,6 +181,9 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 ## Testing
 ### Manual Testing Features
 #### Welcome Screen
+
+![Calorie Tracker Welcome Screen](/assets/readme-images/welcome-screen.jpg)
+
 | Feature | Expected Outcome | Result |
 | :---         |     :---      |          :---: |
 | Page Loads | Welcome screen loads displaying welcome message and information on application use | Pass |
@@ -182,8 +192,12 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 
 
 #### Calorie Tracker
+
+![Update Calorie Goal](/assets/readme-images/calorie-tracker-main-test-items.jpg)
+
 | Feature | Expected Outcome | Result |
 | :---         |     :---      |          :---: |
+|![Update Calorie Goal](/assets/readme-images/calorie-tracker-main-test-items.jpg) |
 | Page Loads | The Calorie Tracker loads with the page heading, table heading with current date, tracker table if present, calorie goal with remaining calories and menu selection options | Pass |
 | Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
 | Correct Date Displayed | The Table Date is displayed with the correct date information set to current date | Pass |

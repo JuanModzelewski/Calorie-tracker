@@ -181,9 +181,6 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 ## Testing
 ### Manual Testing Features
 #### Welcome Screen
-
-![Calorie Tracker Welcome Screen](/assets/readme-images/welcome-screen.jpg)
-
 | Feature | Expected Outcome | Result |
 | :---         |     :---      |          :---: |
 | Page Loads | Welcome screen loads displaying welcome message and information on application use | Pass |
@@ -192,12 +189,8 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 
 
 #### Calorie Tracker
-
-![Update Calorie Goal](/assets/readme-images/calorie-tracker-main-test-items.jpg)
-
 | Feature | Expected Outcome | Result |
 | :---         |     :---      |          :---: |
-|![Update Calorie Goal](/assets/readme-images/calorie-tracker-main-test-items.jpg) |
 | Page Loads | The Calorie Tracker loads with the page heading, table heading with current date, tracker table if present, calorie goal with remaining calories and menu selection options | Pass |
 | Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
 | Correct Date Displayed | The Table Date is displayed with the correct date information set to current date | Pass |

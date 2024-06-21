@@ -401,8 +401,8 @@ def calories_manual_item():
     """
     print()
     request("Enter the amount of Calories(kCal) per 100g:")
-    example("**NOTE You can get this information from the nutritional label"
-            " at the back of the product\n")
+    example("**NOTE You can get this information from the nutritional label")
+    example("at the back of the product\n")
     information("Type 'exit' to return to Calorie Tracker Menu\n")
 
     while True:

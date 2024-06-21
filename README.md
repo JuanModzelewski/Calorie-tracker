@@ -274,7 +274,9 @@ Passed with no errors found
 ![CI Python Linter Results](/assets/readme-images/ci-python-linter-results.jpg)
 
 ### Bugs
-No bugs to report
+While testing the Calorie tracker in Heroku, an APIError: [429]: Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:268278341138'.
+
+![API Error](/assets/readme-images/api-error.jpg)
 <br>
 <br>
 

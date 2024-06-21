@@ -71,13 +71,7 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 - Bold was used for main requests and headings
 
 
-#### Wireframe / Sketches
-- This sketch was created prior to finalizing page content.
-![Wireframe](/assets/images/readme-images/keyboard_hero_sketch.PNG)
-
-
 ## Existing Features
-
 ### Welcome Screen
 
 ![Welcome Screen](/assets/readme-images/welcome-screen.jpg)
@@ -150,7 +144,7 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 
 - [Python3](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-Provided as part of Code Institute's [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template): 
+    - Provided as part of Code Institute's [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template): 
 
 ### Frameworks, Libraries, and Packages
 
@@ -190,9 +184,11 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 - [Many Tools](https://manytools.org/hacker-tools/ascii-banner/) 
     - Many Tools was used to create the Calorie Tracker logo.
 
-- [Os](https://docs.python.org/3/library/os.html) was used to clear the screen when switching between menus or views. 
+- [Os](https://docs.python.org/3/library/os.html) 
+    - Os was used to clear the screen when switching between menus or views. 
 
-- [Sys](https://docs.python.org/3/library/sys.html) was used to create the menu loading style
+- [Sys](https://docs.python.org/3/library/sys.html) 
+    - Sys was used to create the menu loading style
 
 - [Tabulate](https://pypi.org/project/tabulate/) 
     - Tabulate was used to display all application tables, Calorie Tracker, Remove Items Table, Item Confirmation Table, Search Table
@@ -227,8 +223,8 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 
 
 #### Update Calorie Goal
-| Feature | Expected Outcome | Result | Image |
-| :---         |     :---      |          :---: |         :---: |
+| Feature | Expected Outcome | Result |
+| :---         |     :---      |          :---: |
 | Page Loads | Calorie Goal page loads and request is displayed to enter new Calorie Goal | Pass |
 | Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
 | Update Calorie Goal | If the correct input is entered the new Calorie Goal is added to the tracker | Pass |

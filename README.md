@@ -276,12 +276,13 @@ Passed with no errors found
 ### Bugs
 While testing the Calorie tracker in Heroku, an APIError: [429]: Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:268278341138' occurred.
 
+![API Error](/assets/readme-images/api-error.jpg)
+
 Information on this error was found on [HashiCorp](https://support.hashicorp.com/hc/en-us/articles/1500009347021-Google-API-Error-429-Quota-exceeded-for-Queries-and-limit-reached-for-Queries-per-minute-per-user)
 
 ### Resolve Bugs
 Resolved the APIError: [429] by removing the get_all_values() from the for loop within the remove_tracked_item() function. Deducing the API Read Requests.
 
-![API Error](/assets/readme-images/api-error.jpg)
 <br>
 <br>
 

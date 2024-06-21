@@ -642,9 +642,6 @@ def remove_tracked_item():
     request("corresponding Food Entry:\n")
     information("Type 'exit' to return to Calorie Tracker Menu\n")
 
-    current_entries = (len(calorie_tracker.get_all_values()) -
-                                   len(tracker_entries))
-
     while True:
 
         user_input = input(f"{SPACING["THREE_SPACE"]} Remove Item No. : ")
@@ -655,6 +652,9 @@ def remove_tracked_item():
             break
 
         try:
+            current_entries = (len(calorie_tracker.get_all_values()) -
+                                   len(tracker_entries))
+
             for i in tracker_entries:
                 remove_row = int(user_input) + int(current_entries)
 

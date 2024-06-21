@@ -95,8 +95,8 @@ def validate_data(data, value):
                
         # Validates string length for item added to tracker and library    
         elif data == DATA_TYPE.ENTRY_NAME:
-            if not value != "" or len(value) > 50 :
-                raise ValueError("Item Name must be between 0 and 50 characters") 
+            if not 5 <= len(value) <= 50 :
+                raise ValueError("Item Name must be between 5 and 50 characters") 
 
         # Search criteria must be 3 characters or more
         elif data == DATA_TYPE.SEARCH_CRITERIA:

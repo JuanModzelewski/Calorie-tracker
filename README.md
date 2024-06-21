@@ -154,53 +154,64 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 
 ### Frameworks, Libraries, and Packages
 
-- [Colorama](https://pypi.org/project/colorama/) was used to add text color to the terminal.
+- [Colorama](https://pypi.org/project/colorama/) 
+    - Colorama was used to add text color to the terminal and create information hierarchy and add contrast.
 
-- [Datetime](https://docs.python.org/3/library/datetime.html) used to display entry for the current day.
+- [Datetime](https://docs.python.org/3/library/datetime.html) 
+    - Datetime was used to find and display entries for the current day.
 
-- [GitHub](https://github.com/) was used to store the project and for version control.
+- [GitHub](https://github.com/) 
+    - GitHub was used to store the project and for version control.
 
 - [GitHub (GitHub Desktop):](https://github.com/)
-    GitHub is used to store the project's code after being pushed from Git.
-    GitHub Desktop allows for easy creation and storing of repositories locally and an alternative push method.
+    - GitHub is used to store the project's code after being pushed from Git.
+    - GitHub Desktop allows for easy creation and storing of repositories locally and an alternative push method.
 
-- [VS Code:](https://code.visualstudio.com/) Visual Studio Code was used as IDE.
+- [VS Code:](https://code.visualstudio.com/) 
+    - Visual Studio Code was used as IDE.
 
-- [GSpread](https://docs.gspread.org/en/v6.0.0/) was used to interact with the data in the linked sheet.
+- [GSpread](https://docs.gspread.org/en/v6.0.0/) 
+    - GSpread was used to interact with the data on the linked sheets.
 
-- [Google OAuth](https://google-auth.readthedocs.io/en/master/reference/google.oauth2.service_account.html) was used to authenticate the program in order to access Google's APIs.
+- [Google OAuth](https://google-auth.readthedocs.io/en/master/reference/google.oauth2.service_account.html) 
+    - Google OAuth was used to authenticate the program in order to access Google's APIs.
 
-- [Google Cloud](https://cloud.google.com/) was used to generate the APIs required to connect the data sheets with the Python code.
+- [Google Cloud](https://cloud.google.com/) 
+    - Google Cloud was used to generate the APIs required to connect the data sheets with the Python code.
 
-- [Google Sheets](https://docs.google.com/spreadsheets/) was to store tracked entries, calorie goal and food library.
+- [Google Sheets](https://docs.google.com/spreadsheets/) 
+    - Google Sheets was to store tracked entries, calorie goal and food library.
 
-- [Heroku](https://dashboard.heroku.com/login) was used to host and deploy the finished project.
+- [Heroku](https://dashboard.heroku.com/login) 
+    - Heroku was used to host and deploy the complete project.
 
 - [Lucidchart](https://www.lucidchart.com/pages/) was used to create the flowchart during project planning.
 
-- [Many Tools](https://manytools.org/hacker-tools/ascii-banner/) was used to create the Calorie Tracker logo.
+- [Many Tools](https://manytools.org/hacker-tools/ascii-banner/) 
+    - Many Tools was used to create the Calorie Tracker logo.
 
 - [Os](https://docs.python.org/3/library/os.html) was used to clear the screen when switching between menus or views. 
 
 - [Sys](https://docs.python.org/3/library/sys.html) was used to create the menu loading style
 
-- [Tabulate](https://pypi.org/project/tabulate/) was used to display tables in Calorie Tracker, Remove Items Table, Item Confirmation Table, Search Table
+- [Tabulate](https://pypi.org/project/tabulate/) 
+    - Tabulate was used to display all application tables, Calorie Tracker, Remove Items Table, Item Confirmation Table, Search Table
 
-- [Time](https://docs.python.org/3/library/time.html) used to pause the screen before loading the next pages content. 
+- [Time](https://docs.python.org/3/library/time.html) 
+    - Time was used to briefly pause the screen before loading the next pages content. 
 
 <br>
 <br>
 
 ## Testing
-
 ### Manual Testing Features
-
 #### Welcome Screen
 | Feature | Expected Outcome | Result |
 | :---         |     :---      |          :---: |
 | Page Loads | Welcome screen loads displaying welcome message and information on application use | Pass |
 | Input Enter to continue | When 'return' is pressed the Calorie Tracker is loaded  | Pass |
 | Loading Animation | The Loading bar is displayed with the correct loading text  | Pass |
+
 
 #### Calorie Tracker
 | Feature | Expected Outcome | Result |
@@ -218,11 +229,11 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 #### Update Calorie Goal
 | Feature | Expected Outcome | Result | Image |
 | :---         |     :---      |          :---: |         :---: |
-| Page Loads | Calorie Goal page loads and request is displayed to enter new Calorie Goal | Pass | ![Calorie Goal Page](/assets/readme-images/change-calorie-goal.jpg) |
-| Menu Heading | Menu Heading is clearly displayed with the correct title | Pass | ![Calorie Goal Heading](/assets/readme-images/change-calorie-heading.jpg) |
+| Page Loads | Calorie Goal page loads and request is displayed to enter new Calorie Goal | Pass |
+| Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
 | Update Calorie Goal | If the correct input is entered the new Calorie Goal is added to the tracker | Pass |
-| Loading Animation | The Loading bar is displayed with the correct loading text | Pass | ![Calorie Tracker Loading](/assets/readme-images/calorie-tracker-loading.jpg) |
-| Calorie Tracker Loads | The Calorie Tracker is loaded and the new calorie goal is displayed | Pass | ![Calorie Tracker Loading](/assets/readme-images/calorie-tracker-calorie-goal.jpg) |
+| Loading Animation | The Loading bar is displayed with the correct loading text | Pass |
+| Calorie Tracker Loads | The Calorie Tracker is loaded and the new calorie goal is displayed | Pass |
 
 
 #### Manually Add Food Item
@@ -236,29 +247,58 @@ Provided as part of Code Institute's [Python Essentials Template](https://github
 | Save Item to Library | Item is added to the library and confirmation screen displayed again | Pass |
 | Add Item to Tracker | Entry is added to the tracker and the Calorie Tracker is displayed | Pass |
 
+
 #### Search & Add From Library
 | Feature | Expected Outcome | Result |
 | :---         |     :---     |          :---: |
 | Page Loads | Search Food Library page loads and request is displayed to enter the food item to search for | Pass |
 | Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
 | Select Available Option | Any item found in search are displayed in a table and corresponding Item No. can be entered to select an item | Pass |
+| Confirm Selected Item | Page loads with preview to confirm selected item and menu options to Add Item to Tracker or Back To Search | Pass |
+| Item Meal Selection | Page loads displaying the correct meal options to be selected | Pass |
 | Enter the desired serving size of Item | Page loads with request to enter the desired serving size for the item | Pass |
-| Entry confirmation | Page loads displaying a preview of the created entry and providing options to proceed | Pass |
-| Save Item to Library | Item is added to the library and confirmation screen displayed again | Pass |
-| Add Item to Tracker | Entry is added to the tracker and the Calorie Tracker is displayed | Pass |
+| Loading Animation | The Loading bar is displayed with the correct loading text | Pass |
+| Calorie Tracker Loads | The Calorie Tracker is loaded with the new item being displayed in the Tracker table | Pass |
+
+
+#### Search & Add From Library
+| Feature | Expected Outcome | Result |
+| :---         |     :---     |          :---: |
+| Page Loads | Remove Items page loads displaying currently tracked items table and request to select a number from Item No. Colum to remove corresponding Food Entry | Pass |
+| Menu Heading | Menu Heading is clearly displayed with the correct title | Pass |
+| Item No. Selected | Item No. is selected and loading Animation begins | Pass |
+| Loading Animation | The Loading bar is displayed with the correct loading text | Pass |
+| Remove Items Page | Remove Items page loads with the selected item removed from the table | Pass |
+| Exit to Calorie Tracker | Type 'exit' to return to the Calorie Tracker | Pass |
+
+
+### Input Validation Testing
+| Input | Validation | Error Message | Result |
+| :---         |     :---     |          :--- |          :---: |
+| Calorie Tracker Options | Checks if options 1 to 4 has been selected | Invalid data: Select option 1 to 4 | Pass |
+| Calorie Goal Input | Checks if input is between 1500 and 3500 | Invalid data: Select a goal between 1500 and 3500 | Pass |
+| Calorie Goal Input | Checks if input is an number | Invalid data: invalid literal for int() with base 10: '' | Pass |
+| Item Meal | Checks if options 1 to 4 has been selected | Invalid data: Select option 1 to 4 | Pass |
+| Item Name | Checks if user input is between 5 and 50 character | Invalid data: Item Name must be between 5 and 50 characters | Pass |
+| Item Calories | Checks if input is an number | Invalid data: invalid literal for int() with base 10: '' | Pass |
+| Serving Size | Checks if input is an number | Invalid data: invalid literal for int() with base 10: '' | Pass |
+| Confirm Manual Entry | Checks if options 1 to 3 has been selected | Invalid data: Select option 1 to 3 | Pass |
+| Search Food Library | Checks if user input is greater than three characters | Invalid data: Select option 1 to 3 | Pass |
+| Search Food Library | If search item could not be found | There are no items matching your search criteria | Pass |
+| Search Item Selection | Checks to see if the item in Food Item colum exits if not an error is displayed | Invalid data: Select a number from the first colum | Pass |
+| Search Confirmation | Checks if options 1 to 2 has been selected | Invalid data: Select option 1 to 2 | Pass |
+| Remove Item Menu | Checks to see if the food item in Item no. colum exits if not an error is displayed | Invalid data: Select a number from the Item No. colum | Pass |
 
 ### CI Python Linter
 
 Passed with no errors found
-
 [CI Python Linter Results](/assets/readme-images/ci-python-linter-results.jpg)
 
 ### Bugs
 No bugs to report
 
-
 ## Deployment
-The program was developed using GitPod, which was then committed and pushed to GitHub using the GitPod terminal. The finished project was deployed in Heroku using the Code Institute Python Terminal for display purposes.
+The application was created in Visual Studio, using the CI love sandwiches template. All commits and push requests were done through the VS Code terminal. The application was deployed in Heroku using instructions from the CI love sandwiches project as reference. 
 
 ### Connecting Google Sheets
 - This project required the use of Google Drive API and Google Sheets API, both enabled via Google Cloud Platform.
@@ -292,7 +332,7 @@ Deployment to Heroku was completed using the following steps:
     - Select either Automatic Deploys or Manual Deploys and click Deploy Branch.
 6. Once deployment has been completed, click View to view the deployed project.
 
-- The live link is [KeyBoard Hero](https://calorie-tracker-0245c5ccb0dc.herokuapp.com/)
+- The live link is [Calorie Tracker](https://calorie-tracker-0245c5ccb0dc.herokuapp.com/)
 
 ## Credits
 

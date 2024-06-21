@@ -165,7 +165,6 @@ def calorie_tracker_menu():
     # Calculation for remaining Calories
     remaining_calories = view_calorie_goal - total_calories
 
-    print()
     menu_headings("CALORIE TRACKER MENU")
     print(Fore.BLUE + f"CURRENTLY TRACKED ITEMS: {current_date}\n")
     tracker_table("tracker_menu")
@@ -539,7 +538,7 @@ def select_search_item():
 
             for i in search_item_list:
                 if int(user_input) != search_item_list.index(i) + 1:
-                    raise ValueError("Select a number from the first colum\n")
+                    raise ValueError("Select a number from the Item No. colum\n")
 
         except ValueError as e:
             print()
@@ -558,7 +557,6 @@ def search_main():
     global search_item_list
     search_item_list = []
 
-    print()
     menu_headings("SEARCH FOOD LIBRARY")
     request("Please type the food item you are looking for:\n")
     information("Type 'exit' to return to Calorie Tracker Menu\n")
@@ -694,6 +692,7 @@ def update_calorie_goal():
             if validate_data(DATA_TYPE.INTEGER, user_input):
                 update_calorie_goal()
             break
+
 
 
 def main():

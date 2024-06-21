@@ -53,11 +53,11 @@ To help people reach their objectives more easily, the users' primary objective 
         5. The user will enter the item's needed serving size.
         6. The entry will be added to the tracker and the user will return to the Calorie Tracker
 
-### Design
-Since this is a terminal application, the interface contrast was created solely by simple text alteration and styling. 
-Moreover, table formatting to show information in a structured table.
+## Design
+Since this is a terminal application, the interface contrast was created solely by simple text alteration and styling using [Colorama](https://pypi.org/project/colorama/).
+Adding data into a table format using [Tabulate](https://pypi.org/project/tabulate/) provides a clean and structure approach to displaying information.
 
-#### Colors
+### Colors
 In order to create contrast and organize the information hierarchy, [Colorama](https://pypi.org/project/colorama/) was utilized to bring color to the terminal text. 
 - Error messages are colored red to make error identification easier.
 - Blue was used for the logo and primary elements.
@@ -65,7 +65,7 @@ In order to create contrast and organize the information hierarchy, [Colorama](h
 - Yellow was used for Remaining Calorie Text
 - DIM was used to display information without taking focus off the main request
 
-#### Fonts
+### Fonts
 In order to provide information hierarchy with text [Fontstyle](https://pypi.org/project/fontstyle/) was used. Assistance from [GeeksforGeeks](https://www.geeksforgeeks.org/fontstyle-module-in-python/)
 - Italic was used for information text and examples
 - Bold was used for main requests and headings
@@ -76,7 +76,7 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 
 ![Welcome Screen](/assets/readme-images/welcome-screen.jpg)
 
-- 
+- Provides the user with the primary functionality of Calorie tracker and basic information to get started with tracking entries. 
 
 ### Main Calorie Tracker
 | Screen | Image |

@@ -55,15 +55,15 @@ def welcome_screen():
     print("calorie requirements and achieve you goals.\n".center(70))
     print(Fore.BLUE + "GETTING STARTED".center(70))
     print("Set your calorie goal in the calorie tracker menu.".center(70))
-    print("Manually add an entry or search the Food Library.".center(70))
+    print("Manually add an entry or search and add from the Food Library.".center(70))
     print("Items can be added to Food Library by Manually adding".center(70))
-    print("an item and choosing to save to library.".center(70))
+    print("an item and choosing to save the item to the library.".center(70))
     print()
-    user_input = input(Fore.GREEN + "PRESS ENTER TO CONTINUE".center(70))
+    input(Fore.GREEN + "PRESS ENTER TO CONTINUE".center(70))
 
-    if user_input == "":
-        loading_menu("LOADING CALORIE TRACKER")
-        calorie_tracker_menu()
+    
+    loading_menu("LOADING CALORIE TRACKER")
+    calorie_tracker_menu()
 
 
 # Searches google sheets for values in date criteria and
@@ -165,6 +165,7 @@ def calorie_tracker_menu():
     # Calculation for remaining Calories
     remaining_calories = view_calorie_goal - total_calories
 
+    print()
     menu_headings("CALORIE TRACKER MENU")
     print(Fore.BLUE + f"CURRENTLY TRACKED ITEMS: {current_date}\n")
     tracker_table("tracker_menu")
@@ -556,7 +557,8 @@ def search_main():
     """
     global search_item_list
     search_item_list = []
-
+    
+    print()
     menu_headings("SEARCH FOOD LIBRARY")
     request("Please type the food item you are looking for:\n")
     information("Type 'exit' to return to Calorie Tracker Menu\n")
@@ -624,6 +626,7 @@ def remove_tracked_item():
     and only numbers can be entered.
     If input is valid items from corresponding row are removed.
     """
+    print()
     menu_headings("REMOVE ITEMS MENU")
     print(Fore.BLUE + "CURRENTLY TRACKED ITEMS:")
     print()
@@ -671,6 +674,7 @@ def update_calorie_goal():
     between 1500 and 3500 calories
     Updated cell on Calorie Goal sheet
     """
+    print()
     menu_headings("UPDATE CALORIE GOAL")
     request("Please enter your new calorie goal:\n")
     information("Type 'exit' to return to Calorie Tracker\n")

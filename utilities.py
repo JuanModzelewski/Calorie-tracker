@@ -1,8 +1,14 @@
 import os
-from colorama import Back, Fore
+
+# https://pypi.org/project/colorama/
+from colorama import Back, Fore, Style
+
 import sys
 import time
 from constants import DATA_TYPE, SPACING, MENU_HEADING_STYLE
+
+# Assistance with setup and formatting from GeeksforGeeks
+# https://www.geeksforgeeks.org/fontstyle-module-in-python/
 import fontstyle 
 
 # Creates the loading style
@@ -41,9 +47,8 @@ def example(string):
     print(SPACING.THREE_SPACE + text)
 
 # Styling for any other information displayed
-def information(string):
-    text = fontstyle.apply(string, "FAINT")
-    print(SPACING.THREE_SPACE + text)
+def information(text):
+    print(SPACING.THREE_SPACE + Style.DIM +  text)
 
 # Uses loading style and text string to generate loading animation
 def loading_menu(text):

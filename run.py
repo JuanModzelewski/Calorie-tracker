@@ -291,7 +291,7 @@ def add_item(method):
         calorie_tracker.append_row(selected_flat_list)
         print()
         loading_menu("ADDING ITEM TO TRACKER")
-        search_main()
+        calorie_tracker_menu()
 
 
 # Add serving size to list based on method used

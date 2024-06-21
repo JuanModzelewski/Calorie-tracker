@@ -2,22 +2,23 @@
 import colorama
 import gspread
 import re
-
 from datetime import datetime
-
 from colorama import Fore
 from google.oauth2.service_account import Credentials
 from tabulate import tabulate
+
+
 from utilities import (loading_menu, validate_data, request,
                        menu_headings, clear_screen, information, example)
+
 
 from constants import (DATA_TYPE, HEADERS, SPACING, MENU_ITEMS,
                        CALORIE_TRACKER_LOGO)
 
-
 # Initialize colorama for text formatting
 # https://linuxhint.com/colorama-python/
 colorama.init(autoreset=True)
+
 
 # Scope for Google IAM for API access
 # Tutorial from Code Institute Love Sandwiches Essential Project
@@ -33,7 +34,6 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("calorie_tracker")
-
 
 # GSPREAD SHEETS
 calorie_tracker = SHEET.worksheet("calorie_tracker")
@@ -55,13 +55,13 @@ def welcome_screen():
     print("calorie requirements and achieve you goals.\n".center(70))
     print(Fore.BLUE + "GETTING STARTED".center(70))
     print("Set your calorie goal in the calorie tracker menu.".center(70))
-    print("Manually add an entry or search and add from the Food Library.".center(70))
+    print("Manually add an entry or search and add from the Food Library."
+          .center(70))
     print("Items can be added to Food Library by Manually adding".center(70))
     print("an item and choosing to save the item to the library.".center(70))
     print()
     input(Fore.GREEN + "PRESS ENTER TO CONTINUE".center(70))
 
-    
     loading_menu("LOADING CALORIE TRACKER")
     calorie_tracker_menu()
 
@@ -539,7 +539,8 @@ def select_search_item():
 
             for i in search_item_list:
                 if int(user_input) != search_item_list.index(i) + 1:
-                    raise ValueError("Select a number from the Item No. colum\n")
+                    raise ValueError(
+                        "Select a number from the Item No. colum\n")
 
         except ValueError as e:
             print()
@@ -557,7 +558,7 @@ def search_main():
     """
     global search_item_list
     search_item_list = []
-    
+
     print()
     menu_headings("SEARCH FOOD LIBRARY")
     request("Please type the food item you are looking for:\n")
@@ -696,7 +697,6 @@ def update_calorie_goal():
             if validate_data(DATA_TYPE.INTEGER, user_input):
                 update_calorie_goal()
             break
-
 
 
 def main():

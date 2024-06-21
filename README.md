@@ -52,6 +52,8 @@ To help people reach their objectives more easily, the users' primary objective 
         4. The user will choose their meal schedule (breakfast, lunch, supper, and snack) if they choose to add an item.
         5. The user will enter the item's needed serving size.
         6. The entry will be added to the tracker and the user will return to the Calorie Tracker
+<br>
+<br>
 
 ## Design
 Since this is a terminal application, the interface contrast was created solely by simple text alteration and styling using [Colorama](https://pypi.org/project/colorama/).
@@ -69,7 +71,8 @@ In order to create contrast and organize the information hierarchy, [Colorama](h
 In order to provide information hierarchy with text [Fontstyle](https://pypi.org/project/fontstyle/) was used. Assistance from [GeeksforGeeks](https://www.geeksforgeeks.org/fontstyle-module-in-python/)
 - Italic was used for information text and examples
 - Bold was used for main requests and headings
-
+<br>
+<br>
 
 ## Existing Features
 ### Welcome Screen
@@ -137,6 +140,8 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 
 - Select the Item No. in the first colum corresponding to the entry that is to be removed.
 - The user can return to the Calorie Tracker by typing "exit"
+<br>
+<br>
 
 ## Technologies Used
 
@@ -148,54 +153,21 @@ In order to provide information hierarchy with text [Fontstyle](https://pypi.org
 
 ### Frameworks, Libraries, and Packages
 
-- [Colorama](https://pypi.org/project/colorama/) 
-    - Colorama was used to add text color to the terminal and create information hierarchy and add contrast.
-
-- [Datetime](https://docs.python.org/3/library/datetime.html) 
-    - Datetime was used to find and display entries for the current day.
-
-- [GitHub](https://github.com/) 
-    - GitHub was used to store the project and for version control.
-
-- [GitHub (GitHub Desktop):](https://github.com/)
-    - GitHub is used to store the project's code after being pushed from Git.
-    - GitHub Desktop allows for easy creation and storing of repositories locally and an alternative push method.
-
-- [VS Code:](https://code.visualstudio.com/) 
-    - Visual Studio Code was used as IDE.
-
-- [GSpread](https://docs.gspread.org/en/v6.0.0/) 
-    - GSpread was used to interact with the data on the linked sheets.
-
-- [Google OAuth](https://google-auth.readthedocs.io/en/master/reference/google.oauth2.service_account.html) 
-    - Google OAuth was used to authenticate the program in order to access Google's APIs.
-
-- [Google Cloud](https://cloud.google.com/) 
-    - Google Cloud was used to generate the APIs required to connect the data sheets with the Python code.
-
-- [Google Sheets](https://docs.google.com/spreadsheets/) 
-    - Google Sheets was to store tracked entries, calorie goal and food library.
-
-- [Heroku](https://dashboard.heroku.com/login) 
-    - Heroku was used to host and deploy the complete project.
-
-- [Lucidchart](https://www.lucidchart.com/pages/) was used to create the flowchart during project planning.
-
-- [Many Tools](https://manytools.org/hacker-tools/ascii-banner/) 
-    - Many Tools was used to create the Calorie Tracker logo.
-
-- [Os](https://docs.python.org/3/library/os.html) 
-    - Os was used to clear the screen when switching between menus or views. 
-
-- [Sys](https://docs.python.org/3/library/sys.html) 
-    - Sys was used to create the menu loading style
-
-- [Tabulate](https://pypi.org/project/tabulate/) 
-    - Tabulate was used to display all application tables, Calorie Tracker, Remove Items Table, Item Confirmation Table, Search Table
-
-- [Time](https://docs.python.org/3/library/time.html) 
-    - Time was used to briefly pause the screen before loading the next pages content. 
-
+- [Colorama](https://pypi.org/project/colorama/) used to add text color to the terminal and create information hierarchy and add contrast.
+- [Datetime](https://docs.python.org/3/library/datetime.html) used to find and display entries for the current day.
+- [GitHub](https://github.com/) used to store the project and for version control.
+- [GitHub (GitHub Desktop):](https://github.com/) allows for easy creation and storing of repositories locally and provides an alternative push method.
+- [VS Code:](https://code.visualstudio.com/) was the primary IDE.
+- [GSpread](https://docs.gspread.org/en/v6.0.0/) used to interact with the data on linked sheets.
+- [Google OAuth](https://google-auth.readthedocs.io/en/master/reference/google.oauth2.service_account.html) used to authenticate the program in order to access Google's APIs.
+- [Google Cloud](https://cloud.google.com/) used to generate the APIs required to connect the data sheets with the Python code.
+- [Google Sheets](https://docs.google.com/spreadsheets/) used to store tracked entries, calorie goal and food library.
+- [Heroku](https://dashboard.heroku.com/login) used to host and deploy the complete project.
+- [Many Tools](https://manytools.org/hacker-tools/ascii-banner/) used to create the Calorie Tracker logo.
+- [Os](https://docs.python.org/3/library/os.html) used to clear the screen when switching between menus or user inputs
+- [Sys](https://docs.python.org/3/library/sys.html) used to create the menu loading style
+- [Tabulate](https://pypi.org/project/tabulate/) used to display all application tables, Calorie Tracker, Remove Items Table, Item Confirmation Table, Search Table
+- [Time](https://docs.python.org/3/library/time.html) used to briefly pause the screen before loading the next pages content. 
 <br>
 <br>
 
@@ -292,6 +264,8 @@ Passed with no errors found
 
 ### Bugs
 No bugs to report
+<br>
+<br>
 
 ## Deployment
 The application was created in Visual Studio, using the CI love sandwiches template. All commits and push requests were done through the VS Code terminal. The application was deployed in Heroku using instructions from the CI love sandwiches project as reference. 
